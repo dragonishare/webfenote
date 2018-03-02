@@ -6,7 +6,6 @@ gitbook上编辑后的内容，会自动同步到github上；github上编辑后�
 这样既可以通过gitbook编辑内容，又可以通过本地编辑后push到github；
 * **第一步：** 在gitbook上Create a new book，然后在github上新建一个repo用来存放书籍源码
 * **第二步：** 在gitbook上新建书籍的settings里进行如下设置：
-
 ![](http://p4z4c6ik8.bkt.clouddn.com/gitbook_github1.jpeg)
 
 * **第三步：success!**
@@ -20,7 +19,8 @@ gitbook上编辑后的内容，会自动同步到github上；github上编辑后�
 设置步骤：
 * **第一步：** 在github对应书籍仓库的settings里进行如下设置：
 Use the **master branch** for GitHub Pages
-![](/assets/gitbook_github2.png)
+![](http://p4z4c6ik8.bkt.clouddn.com/gitbook_github2.png)
+
 * **第二步：** 在README.md里编辑目录（把SUMMARY.md文件里的内容复制过来即可）
 * **第三步：** 设置完成后，就可以访问md文件版的项目github pages了
 
