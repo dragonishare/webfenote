@@ -22,6 +22,8 @@ Use the **master branch** for GitHub Pages
 ![](/assets/gitbook_github2.png)
 * **第二步：** 在README.md里编辑目录（把SUMMARY.md文件里的内容复制过来即可）
 * **第三步：** 设置完成后，就可以访问md文件版的项目github pages了
+修改
+
 
 
 
