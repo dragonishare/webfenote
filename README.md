@@ -1,7 +1,4 @@
 # 前言
 
-这本书是JavaScript高级程序设计\(3rd\)的笔记摘要
-
-在gitbook上修改，github上会自动同步吗？
-在github上修改，gitbook上会自动同步吗？
+这本书是关于web前端的笔记，包含HTML/HTML5，CSS/CSS3，JavaScript，Node.js等等方面。
 
