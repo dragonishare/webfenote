@@ -105,8 +105,9 @@ function quickSort(arr) {
 　　}
 　　return quickSort(left).concat([pivot], quickSort(right));
 }
+var arr = [8,2,4,9,3,11];
+quickSort(arr);// =>[2, 3, 4, 8, 9, 11]
 ```
-
 
 
 
