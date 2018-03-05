@@ -80,6 +80,33 @@ function reverseStr(str) {
 }
 reverseStr("hello world");// =>"dlrow olleh"
 ```
+### 快速排序（Quicksort）
+"快速排序"的整个过程只需三步：
+
+* 在数据集之中，选择一个元素作为"基准"（pivot）；
+* 所有小于"基准"的元素，都移到"基准"的左边；所有大于"基准"的元素，都移到"基准"的右边；
+* 对"基准"左边和右边的两个子集，不断重复第一步和第二步，直到所有子集只剩下一个元素为止；
+
+```javascript
+function quickSort(arr) {
+　　if (arr.length <= 1) {
+		return arr;
+	}
+　　var pivotIndex = Math.floor(arr.length / 2);//floor(x)方法返回小于等于x的最大整数
+　　var pivot = arr.splice(pivotIndex, 1)[0];//splice(index,howmany,item1,..,itemX)向数组中添加/删除项目，然后返回被删除的项目的新数组，该方法会改变原数组
+　　var left = [];
+　　var right = [];
+　　for (var i = 0; i < arr.length; i++){
+　　　　if (arr[i] < pivot) {
+　　　　　　left.push(arr[i]);
+　　　　} else {
+　　　　　　right.push(arr[i]);
+　　　　}
+　　}
+　　return quickSort(left).concat([pivot], quickSort(right));
+}
+```
+
 
 
 
