@@ -12,6 +12,58 @@
 * **sort()** 方法用于对数组的元素进行排序。返回对数组的引用。请注意，**数组在原数组上进行排序**，不生成副本。如果调用该方法时没有使用参数，将按字母顺序对数组中的元素进行排序，说得更精确点，是按照字符编码的顺序进行排序。
 * **reverse()** 方法用于颠倒数组中元素的顺序。该方法会改变原来的数组，而不会创建新的数组。
 
+### JavaScript数组操作
+
+1、数组的创建
+```javascript
+var array = [];
+var array = new Array();　//创建一个数组
+var array = new Array([size]);　//创建一个数组并指定长度，注意不是上限，是长度
+var array = new Array([element0[, element1[, ...[, elementN]]]]);　//创建一个数组并赋值
+```
+2、 数组元素的访问
+```javascript
+var getArrItem=array[1]; //获取数组的元素值
+array[1]= "new value"; //给数组元素赋予新的值
+```
+3、 数组元素的添加
+```javascript
+array. push([item1 [item2 [. . . [itemN ]]]]);// 将一个或多个新元素添加到数组结尾，并返回数组新长度
+array.unshift([item1 [item2 [. . . [itemN ]]]]);// 将一个或多个新元素添加到数组开始，数组中的元素自动后移，返回数组新长度
+array.splice(insertPos,0,[item1[, item2[, . . . [,itemN]]]]);//将一个或多个新元素插入到数组的指定位置，插入位置的元素自动后移，返回""
+```
+4、 数组元素的删除
+```javascript
+array.pop(); //移除最后一个元素并返回该元素值
+array.shift(); //移除最前一个元素并返回该元素值，数组中元素自动前移
+array.splice(deletePos,deleteCount); //删除从指定位置deletePos开始的指定数量deleteCount的元素，数组形式返回所移除的元素
+array.slice(start, [end]); //以数组的形式返回数组的一部分，注意不包括 end 对应的元素，如果省略 end 将复制 start 之后的所有元素
+```
+5、 数组的合并
+```javascript
+array.concat([item1[, item2[, . . . [,itemN]]]]); //将多个数组（也可以是字符串，或者是数组和字符串的混合）连接为一个数组，返回连接好的新的数组
+```
+6、 数组的拷贝
+```javascript
+array.slice(0); //返回数组的拷贝数组，注意是一个新的数组，不是指向
+array.concat(); //返回数组的拷贝数组，注意是一个新的数组，不是指向
+```
+7、 数组元素的排序
+```javascript
+array.reverse(); //反转元素（最前的排到最后、最后的排到最前），返回数组地址
+array.sort(); //对数组元素排序，返回数组地址
+```
+8、 数组元素的字符串化
+```javascript
+array.join(separator); //返回字符串，这个字符串将数组的每一个元素值连接在一起，中间用 separator 隔开。
+ 
+toLocaleString 、toString 、valueOf：可以看作是join的特殊用法，不常用
+```
+
+
+
+
+
 
 
 
