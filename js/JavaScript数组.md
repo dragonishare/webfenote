@@ -67,7 +67,7 @@ toLocaleString 、toString 、valueOf：可以看作是join的特殊用法，不
 * **indexOf()**
 * **lastIndexOf()**
 
-这两个方法都接收两个参数：要查找的项和（可选的）表示查找起点位置的索引。
+这两个方法都接收两个参数：**要查找的项**和（可选的）表示查找起点位置的索引。
 这两个方法都返回要查找的项在数组中的位置，或者在没找到的情况下返回-1。
 ```javascript
 var arr = [1, 2, 3, 4];
@@ -77,11 +77,51 @@ console.log(position1);// =>0
 console.log(position2);// =>0
 ```
 
+2、迭代方法
 
+5个迭代方法，每个方法都接收两个参数：**要在每一项上运行的函数**和（可选的）运行该函数的作用域对象--影响this的值。
+传入方法中的函数会接收三个参数：**数组项的值、该项在数组中的位置和数组对象本身**。
 
+* **1、every()**:  如果该函数对每一项都返回true,则every() 返回true;
+* **2、some()**:  如果该函数对任一项返回true,则some() 返回true;
 
+上面两个方法都**用于查询数组中的项是否满足某个条件**。
+```javascript
+var arr = [1, 2, 3, 4];
+var everyResult = arr.every(function(item, index, array){
+	return (item > 2);
+});
+console.log(everyResult);// =>false
+var someResult = arr.some(function(item, index, array){
+	return (item > 2);
+});
+console.log(someResult);// =>true
+```
 
+* **3、filter()**: 返回**该函数返回true的项组成的数组**;
 
+这个方法**对查询符合某些条件的所有数组项非常有用。**
+```javascript
+var arr = [1, 2, 3, 4];
+var filterResult = arr.filter(function(item, index, array){
+	return (item > 2);
+});
+console.log(filterResult);// =>[3, 4]
+```
+
+* **4、map()**: 返回**每次函数调用的结果组成的数组;**
+
+这个方法**适合创建包含的项与另一个数组一一对应的数组。**
+```javascript
+var arr = [1, 2, 3, 4];
+var mapResult = arr.map(function(item, index, array){
+	return item * 2;
+});
+console.log(mapResult);// =>[2, 4, 6, 8]
+```
+* **5、forEach()**: 这个方法**没有返回值**;
+
+这个方法只是对数组中的每一项运行传入的函数。本质上与使用for循环迭代数组一样。
 
 
 
