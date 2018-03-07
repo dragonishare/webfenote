@@ -123,5 +123,23 @@ console.log(mapResult);// =>[2, 4, 6, 8]
 
 这个方法只是对数组中的每一项运行传入的函数。本质上与使用for循环迭代数组一样。
 
+3、归并方法
+
+* **reduce()**
+* **reduceRight()**
+
+这两个方法都会迭代数组的所有项，然后构建一个最终返回的值。
+这两个方法都接收两个参数：**在每一项上调用的函数**和(可选的)作为归并基础的初始值。
+
+传给reduce()和reduceRight()的函数接收4个参数：**前一个值**、**当前值**、**项的索引**和**数组对象**。
+**这个函数返回的任何值都会作为第一个参数自动传给下一项。**
+```javascript
+var arr = [1, 2, 3, 4];
+var reduceResult = arr.reduce(function(prev, cur, index, array){
+    return prev + cur;
+});
+console.log(reduceResult);// =>10
+```
+
 
 
