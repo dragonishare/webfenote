@@ -109,5 +109,133 @@ var arr = [8,2,4,9,3,11];
 quickSort(arr);// =>[2, 3, 4, 8, 9, 11]
 ```
 
+### 数组去重
+#### 1、利用for循环遍历
+```javascript
+//for
+function unique(arr){
+  var newArr = [];
+  var item;
+  for(var i = 0, len = arr.length; i < len; i++){
+    item = arr[i];
+    if(newArr.indexOf(item) === -1){
+      newArr.push(item);
+    }
+  }
+  return newArr;
+};
+//forEach()
+function unique(arr){
+  var newArr = [];
+  arr.forEach(function(item){
+    if(newArr.indexOf(item) === -1){
+      newArr.push(item);
+    }
+  });
+  return newArr;
+}
+//reduce()
+function unique(arr){
+  return arr.reduce(function(prev, next){
+    if(prev.indexOf(next) === -1){
+      prev.push(next);
+    }
+    return prev;
+  }, []);
+}
+var arr = [1,3,2,1,null,4,5,2,4,1,5,null];
+console.log(unique(arr));// =>[1, 3, 2, null, 4, 5]
+```
+以上方法不能处理数组NaN的去重，**因为NaN不等于任何值**
+var arr = [4, 2, 1, 3, 2, 3, NaN, NaN];
+
+#### 2、索引判断
+利用了数组indexOf的特点，它会找到数组中第一个该元素值的索引
+```javascript
+function unique(arr){
+  var newArr = [arr[0]];
+  var item;
+  for(var i = 1, len = arr.length; i < len; i++){
+    item = arr[i];
+    if(arr.indexOf(item) === i){
+      newArr.push(item);
+    }
+  }
+  return newArr;
+}
+var arr = [1,3,2,1,null,4,5,2,4,1,5,null];
+console.log(unique(arr));// =>[1, 3, 2, null, 4, 5]
+```
+
+#### 3、排序去邻
+调用数组的sort方法,目的是把相同的元素值聚在一起,这样只需要判断数组元素值和上一个索引值不同就可以了
+```javascript
+function unique(arr){
+  var newArr = [arr[0]];
+  var item;
+  arr.sort();
+  for(var i = 1, len = arr.length; i < len; i++){
+    item = arr[i];
+    if(item !== arr[i - 1]){
+      newArr.push(item);
+    }
+  }
+  return newArr;
+}
+var arr = [1,3,2,1,null,4,5,2,4,1,5,null];
+console.log(unique(arr));// => [1, 2, 3, 4, 5, null]
+```
+#### 4、临时对象
+如果数组很大可能会很占内存,但是效率很高
+```javascript
+function unique(arr){
+  var newArr = [];
+  var temp = {};
+  var item;
+  var type;
+  for(var i = 0, len = arr.length; i < len; i++){
+    item = arr[i];
+    type = typeof item;
+    if(!temp[item]){
+      temp[item] = [type];
+      newArr.push(item);
+    }else if(temp[item].indexOf(type) === -1){
+      temp[item].push(type);
+      newArr.push(item);
+    }
+  }
+  return newArr;
+}
+var arr = [1,3,2,1,4,5,2,4,1,5,'1','2'];
+console.log(unique(arr));// =>
+[1, 3, 2, 4, 5, "1", "2"]
+```
+
+#### 5、集合转换
+ES6 提供了新的数据结构 Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。
+```javascript
+let set = new Set();
+let a = NaN;
+let b = NaN;
+set.add(a);
+set.add(b);
+set;// =>{NaN}
+//添加了两个NaN，但是只能加入一个。这表明，在 Set 内部，两个NaN是相等。
+
+set.add({});
+set.size // =>1
+
+set.add({});
+set.size // =>2
+//由于两个空对象不相等，所以它们被视为两个值。
+```
+
+数组去重set实现
+```javascript
+function unique(arr){
+  return Array.from(new Set(arr));
+}
+```
+将数组转为set集合，抛弃多余数值,最后利用ES6的新数组方法Array.from将set集合转为数组返回
 
 
