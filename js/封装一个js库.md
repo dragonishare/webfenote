@@ -38,9 +38,62 @@ JavaScript库实际上就是一堆函数的集合
 		  //把$函数注册到 'myNameSpace'命名空间中
 		  window['myNameSpace']['$']=$;
           
-	})();<
+	})();
 ```
 
 [参考地址-JS---创建自己的“JavaScript库”，原来如此简单
 ](http://blog.csdn.net/mazhaojuan/article/details/7659906)
+
+
+------------------------------
+### 立即执行的匿名函数
+
+不管是模块化开发还是非模块化开发，建立一个工具库时，一般都得用到匿名函数。
+
+差别在于：模块化开发依赖模块加载器提供的define函数，匿名函数作为参数传入，会自动getValue求值。而非模块化开发，则用特殊的格式写立即执行的匿名函数，其中一种格式如下：
+```javascript
+;(function(window) {
+    //这里写你所有的内容
+}(window));
+```
+开头的分号，意在防止与其他js文件合并压缩时，由于上一个文件没有用分号结尾而产生问题。最末尾的分号则是防止与下一个js文件发生合并冲突。
+
+将全局对象window作为参数传入，则可以使之在匿名函数内部作为局部变量访问，提供访问速度。
+
+### 保存常用函数为局部变量
+有一些数组或对象的方法经常能使用到，应将它们保存为局部变量以提高访问速度。
+```javascript
+;(function(window){
+    var obj = {},
+                toStr = obj.toString,
+                hasOwnProp = obj.hasOwnProperty,
+                arr = [],
+                slice = arr.slice,
+                push = arr.push;
+
+            var isObject = function(obj) {
+                    return obj == null ? obj.toString() : toStr.call(obj) === '[object Object]';
+                },
+                isArray = Array.isArray || function(obj) {
+                    return toStr.call(obj) === '[object Array]';
+                },
+                isFunction = function(obj) {
+                    return typeof obj === 'function';
+                },
+                isString = function(obj) {
+                    return typeof obj === 'string';
+                },
+                isBoolean = function(obj) {
+                    return typeof obj === 'boolean';
+                },
+                inArray = function(arr, item) {
+                    return arr.indexOf(item) !== -1;
+                };
+
+}(window));
+```
+
+[参考地址-如何写一个你自己的jQuery库
+?](https://github.com/Lucifier129/Lucifier129.github.io/issues/10)
+
 
