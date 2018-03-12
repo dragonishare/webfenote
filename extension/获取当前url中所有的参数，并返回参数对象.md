@@ -6,7 +6,7 @@ function getUrlParams(url) {
       var paramsObj = {};
       if(url.indexOf("?") != -1) {
             var strArr = url.split("?")[1];//获取url"?"后的字符串
-            var tmpStrArr = str.split("&");
+            var tmpStrArr = strArr.split("&");
             for (var i = 0, len = tmpStrArr.length; i < len; i++) {
                   paramsObj[tmpStrArr[i].split("=")[0]] = tmpStrArr[i].split("=")[0];
             }
