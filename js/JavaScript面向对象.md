@@ -42,6 +42,23 @@ JavaScript规定，每一个构造函数都有一个prototype属性，指向另�
 **prototype模式的验证方法**
 为了配合prototype属性，JavaScript定义了一些辅助方法，帮助我们使用它。
 
+**4.1 isPrototypeOf()**
+这个方法用来判断，某个proptotype对象和某个实例之间的关系。
+`对象.prototype.isPrototypeOf(实例名)`
+
+**4.2 hasOwnProperty()**
+每个实例对象都有一个hasOwnProperty()方法，用来判断某一个属性到底是本地属性，还是继承自prototype对象的属性。
+`实例名.hasOwnProperty("属性名")`
+
+**4.3 in运算符**
+in运算符可以用来判断，某个实例是否含有某个属性，不管是不是本地属性。
+`"属性名" in 实例名`
+in运算符还可以用来遍历某个对象的所有属性。
+```
+for(var prop in Obj) {
+    console.log("Obj["+prop+"]="+Obj[prop]);
+}
+```
 
 ## 面向对象编程：构造函数的继承
 
