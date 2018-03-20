@@ -64,6 +64,11 @@ for(var prop in Obj) {
 
 ## 面向对象编程：非构造函数的继承
 
+## 参考资料
+* [Javascript 面向对象编程（一）：封装](http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_encapsulation.html)
+* []()
+* []()
+
 
 
 
