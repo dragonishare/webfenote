@@ -1,4 +1,4 @@
-## JavaScript算法
+# JavaScript算法
 
 ### 编写一个js函数用来求n的阶乘n！
 #### 1. 递归方式   
