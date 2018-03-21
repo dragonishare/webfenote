@@ -1,4 +1,4 @@
-# HTML5 视频直播
+# HTML5 视频直播 
 目前 WEB 上主流的视频直播方案有 HLS 和 RTMP，移动 WEB 端目前就只有 HLS 能用。
 
 移动端的 FLV 方案[HTML5 FLV Player]（https://github.com/Bilibili/flv.js）
