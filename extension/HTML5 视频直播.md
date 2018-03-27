@@ -41,3 +41,5 @@ Real Time Messaging Protocol（简称 RTMP）是 Macromedia 开发的一套视�
 ## 参考资料
 * [HTML5 视频直播](https://imququ.com/post/html5-live-player-1.html)
 
+
+使用腾讯云的解决方案
