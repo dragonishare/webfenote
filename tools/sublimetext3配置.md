@@ -15,6 +15,9 @@ SublimeServer会启动一个轻量级的，静态的WEB服务器，让你在文�
 在更多扩展程序里搜索LiveReload插件，安装由livereload.com提供的
 
 2. Sublime Text安装LiveReload插件
+
+如果通过sublime text安装包命令安装不成功，建议手动下载https://github.com/alepez/LiveReload-sublimetext3
+
 点击菜单栏Preferences-Package Settings->LiveReload->Settings - User打开用户配置文件输入如下内容配置插件；
 {
     "enabled_plugins": [
