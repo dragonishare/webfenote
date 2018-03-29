@@ -141,6 +141,9 @@ jsformat 是 sublime 上 js 格式化比较好用的插件之一，通过修改�
 * Emmet
 * DocBlockr
 * Boxy Theme
+* JavaScript Next
+* HTML-CSS-JS Prettify
+
 
 
 
