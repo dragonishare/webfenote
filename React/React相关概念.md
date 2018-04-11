@@ -1,4 +1,5 @@
 # React相关概念
+React 是一个采用声明式，高效而且灵活的用来构建用户界面的框架。
 
 ## React起源
 React 起源于 Facebook 的内部项目，2013年5月开源。
@@ -18,6 +19,49 @@ React 起源于 Facebook 的内部项目，2013年5月开源。
  + Mounting：已插入真实 DOM
  + Updating：正在被重新渲染
  + Unmounting：已移出真实 DOM
+
+### 基本概念
+
+#### JSX 简介
+一种 JavaScript 的语法扩展。 推荐在 React 中**使用 JSX 来描述用户界面**。JSX 乍看起来可能比较像是模版语言，但事实上它完全是在 JavaScript 内部实现的。
+
+**JSX 用来声明 React 当中的元素。**
+
+可以任意地在 JSX 当中使用 JavaScript 表达式，在 JSX 当中的**表达式要包含在大括号里**。
+
+JSX 本身其实也是一种表达式，在编译之后呢，JSX 其实会被转化为普通的 JavaScript 对象，
+这也就意味着，其实可以在 if 或者 for 语句里使用 JSX，将它赋值给变量，当作参数传入，作为返回值都可以
+
+>
+**警告**:
+因为 JSX 的特性更接近 JavaScript 而不是 HTML , 所以 React DOM 使用 camelCase 小驼峰命名 来定义属性的名称，而不是使用 HTML 的属性名称。
+例如，class 变成了 className，而 tabindex 则对应着 tabIndex。
+
+#### React 元素
+
+**React应用的构成模块：元素和组件**
+**React 元素**：用来描述你在屏幕上看到的内容。React 当中的元素事实上是普通的对象，**React DOM** 可以确保 **浏览器 DOM** 的数据内容与 **React 元素**保持一致。
+
+要将React元素渲染到根DOM节点中，我们通过把它们都传递给** ReactDOM.render() **的方法来将其渲染到页面上：
+```
+const element = <h1>Hello, world</h1>;
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
+
+React 组件使用一个名为** render() **的方法， 接收数据作为输入，输出页面中对应展示的内容。 
+
+React 元素都是**immutable 不可变的**。当元素被创建之后，你是无法改变其内容或属性的。一个元素就好像是动画里的一帧，它代表应用界面在某一时间点的样子。
+
+#### 组件
+
+组件从概念上看就像是函数，它可以接收任意的输入值（称之为“**props**”），并返回一个需要在页面上展示的React元素。
+
+
+
+
 
 ## Redux
 
@@ -53,7 +97,13 @@ React 起源于 Facebook 的内部项目，2013年5月开源。
 
 组件作为 React 渲染的一个基本组成，我们通常把它们分为两类，**容器型**和**展示型**。相较于**容器型**，**展示型**是通过**容器型**传递 props 来获取数据，而**容器型**可以直接从 store 中获取，处理并传递给下级组件。
 
+在实际应用中会发现，定义一个容器型组件负责处理数据，然后分发给下级展示型组件，当需要更新数据时，那么容器型组件发生变化会引起下级展示型组件的变化，这样就对我们业务上造成了一定的困扰（在不需要更新的部分组件上也发生了更新）。因此，我们选择在需要获取数据的组件中使用 `connect`，这样则会方便很多（感觉有些违反规则）。
+
+
+
 # 参考资料
-[React 入门实践]()
+[React 入门实践](https://segmentfault.com/a/1190000004570818)
+[一看就懂的ReactJs入门教程（精华版）](http://www.cocoachina.com/webapp/20150721/12692.html)
+[React中文文档](https://doc.react-china.org/)
 
 
