@@ -27,14 +27,16 @@ React 起源于 Facebook 的内部项目，2013年5月开源。
 
 **JSX 用来声明 React 当中的元素。**
 
+书写 JSX 的时候一般都会带上换行和缩进，这样可以增强代码的可读性。与此同时，同样**推荐在 JSX 代码的外面扩上一个小括号**，这样可以防止 分号自动插入 的 bug。
+
 可以任意地在 JSX 当中使用 JavaScript 表达式，在 JSX 当中的**表达式要包含在大括号里**。
 
 JSX 本身其实也是一种表达式，在编译之后呢，JSX 其实会被转化为普通的 JavaScript 对象，
 这也就意味着，其实可以在 if 或者 for 语句里使用 JSX，将它赋值给变量，当作参数传入，作为返回值都可以
 
 >
-**警告**:
-因为 JSX 的特性更接近 JavaScript 而不是 HTML , 所以 React DOM 使用 camelCase 小驼峰命名 来定义属性的名称，而不是使用 HTML 的属性名称。
+**警告:**
+因为 JSX 的特性更接近 JavaScript 而不是 HTML , 所以 **React DOM** 使用 **camelCase 小驼峰命名 来定义属性的名称**，而不是使用 HTML 的属性名称。
 例如，class 变成了 className，而 tabindex 则对应着 tabIndex。
 
 #### React 元素
@@ -57,9 +59,105 @@ React 元素都是**immutable 不可变的**。当元素被创建之后，你是
 
 #### 组件
 
-组件从概念上看就像是函数，它可以接收任意的输入值（称之为“**props**”），并返回一个需要在页面上展示的React元素。
+组件从概念上看就像是函数，它可以接收任意的输入值（称之为“**props**”），并返回一个需要在页面上展示的React元素。**组件的返回值只能有一个根元素**。
+```
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
 
+function App() {
+  return (
+    <div>
+      <Welcome name="Sara" />
+      <Welcome name="Cahal" />
+      <Welcome name="Edite" />
+    </div>
+  );
+}
 
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
+```
+要用一个`<div>`来包裹所有`<Welcome />`元素
+
+**函数定义/类定义组件**
+定义一个组件最简单的方式是使用JavaScript函数：
+```
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+```
+该函数是一个有效的React组件，它接收一个单一的“props”对象并返回了一个React元素。
+
+也可以使用 ES6 class 来定义一个组件:
+```
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+```
+上面两个组件在React中是相同的。
+
+>
+**警告:**
+**组件名称必须以大写字母开头**。
+例如，`<div /> `表示一个DOM标签，但` <Welcome /> `表示一个组件，并且在使用该组件时你必须定义或引入它。
+
+**Props的只读性**
+
+无论是使用函数或是类来声明一个组件，它决不能修改它自己的props。
+**所有的React组件必须像纯函数那样使用它们的props。**
+
+#### State & 生命周期
+
+定义为类的组件有一些特性。局部状态就是如此：一个功能只适用于类。
+
+状态与属性十分相似，但是状态是私有的，完全受控于当前组件。
+
+在组件类上声明特殊的方法，当组件挂载或卸载时，来运行一些代码：这些方法被称作生命周期钩子。
+
+当组件输出到 DOM 后会执行` componentDidMount() `钩子
+
+当组件被移除时，会执行 `componentWillUnmount()`钩子
+
+**正确地使用状态**
+1、不要直接更新状态
+```
+// Wrong 此代码不会重新渲染组件
+this.state.comment = 'Hello';
+
+// Correct 应当使用 setState()
+this.setState({comment: 'Hello'});
+```
+**构造函数是唯一能够初始化` this.state `的地方。**
+
+2、状态更新可能是异步的
+因为 this.props 和 this.state 可能是异步更新的，你不应该依靠它们的值来计算下一个状态。
+```
+// Wrong 此代码可能无法更新计数器
+this.setState({
+  counter: this.state.counter + this.props.increment,
+});
+
+// Correct
+this.setState((prevState, props) => ({
+  counter: prevState.counter + props.increment
+}));
+```
+第二种形式的 setState() 来接受一个函数而不是一个对象。 该函数将接收先前的状态作为第一个参数，将此次更新被应用时的props做为第二个参数
+
+3、状态更新合并
+当你调用` setState() `时，React 将你提供的对象合并到当前状态。
+
+#### 事件处理
+
+React 元素的事件处理和 DOM元素的很相似。但是有一点语法上的不同:
+
+* React事件绑定属性的命名采用驼峰式写法，而不是小写。
+* 如果采用 JSX 的语法你需要传入一个函数作为事件处理函数，而不是一个字符串(DOM元素的写法)
 
 
 
@@ -86,6 +184,11 @@ React 元素都是**immutable 不可变的**。当元素被创建之后，你是
 ```
 获取 state 需要在组件中调用 connect 函数，可以自行定义需要获取的 state。
 **connect 必须紧跟 component 的定义，不然会报错。**
+
+![](media/15235004676150.jpg)
+图上可以看出，store，state，reducer，action其实最后都只有一个，我们只是为了代码逻辑将其分为多个，层次分明，便于开发和阅读。
+
+[一幅图明白React-Redux的原理](https://juejin.im/post/5acdbe8f51882548fe4a7af1)
 
 ## Router
 
