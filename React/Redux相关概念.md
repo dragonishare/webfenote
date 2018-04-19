@@ -11,6 +11,18 @@ React 只是 DOM 的一个抽象层，并不是 Web 应用的完整解决方案�
 
 为了解决这个问题，2014年 Facebook 提出了 Flux 架构的概念，引发了很多的实现。2015年，Redux 出现，将 Flux 与函数式编程结合一起，很短时间内就成为了最热门的前端架构。
 
+## 预备知识
+需要懂 React
+
+Redux 有很好的[文档](https://redux.js.org/)，还有配套的小视频（[前30集](https://egghead.io/courses/getting-started-with-redux)，后30集）
+
+## 设计思想
+
+> 
+（1）Web 应用是一个状态机，视图与状态是一一对应的。
+（2）所有的状态，保存在一个对象里面。
+
+## 基本概念和 API
 
 
 
