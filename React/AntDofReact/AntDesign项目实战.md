@@ -60,6 +60,8 @@ import Products from './routes/Products';
 
 <Route path="/products" exact component={Products} />
 ```
+## 辅助理解
+![](media/15248305753951.jpg)
 
 # 参考资料
 [Ant Design of React](https://ant.design/docs/react/practical-projects-cn)
