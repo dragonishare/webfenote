@@ -1,12 +1,81 @@
 [toc]
 # React
 
+## React版本
+React版本中比较重点的几个版本介绍
+
+### jsxtransformer.js、browser.js、babel.js
+
+在react 0.14前，浏览器端实现对jsx的编译依赖jsxtransformer.js 
+在react 0.14后，这个依赖的库改为browser.js
+页面script标签的type也由text/jsx改为text/babel
+但是以上只能用来测试学习react
+生产环境需要借助编译工具事先将jsx编译成js
+对应的这个工具也由react-tool更换为babel
+
+
+### React 0.14
+
+React Router 的作者说过版本号永远和 React 保持一致，从 v0.10 开始确实如此。然后 v0.11，v0.12，v0.13，眼看着时间已经过去了一年多……怎么着也该出 v1.0 了吧，结果 React 发布了 v0.14，而且还规划了 v0.15，让 React Router 的若干个 v1.0-beta 版本哭瞎在厕所。
+
+**React 「一分为二」**
+
+原本的 react package 被拆分为 react 及 react-dom 两个 package。其中 react package 中包含 React.createElement、 .createClass、 .Component， .PropTypes， .Children这些 API，而 react-dom package 中包含 ReactDOM.render、 .unmountComponentAtNode、 .findDOMNode。
+
+原本在服务端渲染用的两个 API .renderToString 和 .renderToStaticMarkup 被放在了 react-dom/server 中。
+
+此外，原本 React.addons 下面的工具全部变成了独立的 package
+
+原本的 API 在 v0.14 版中仍然可以使用，只不过会有 warning，最终会在 v0.15 版的时候完全移除。
+
+**refs 变成了真正的 DOM 节点**
+
+当我们需要获取 React 组件上某个 DOM 节点时，React 提供了 refs 方法方便我们快速引用。为了方便我们使用，React 还「贴心」地对 refs 做了一层封装，使用 this.refs.xxx.getDOMNode() 或 React.findDOMNode(this.refs.xxx) 可以获取到真正的 DOM 节点。
+结果发现大家真正需要的就是 DOM 节点本身，封装了半天完全是浪费感情。
+于是在 v0.14 版中 refs 指向的就是 DOM 节点，同时也会保留 .getDOMNode() 方法（带 warning），最终在 v0.15 版中去除该方法。
+需要注意的是，如果你给自定义的 React 组件（除了 DOM 自带的标签，如 div、p 等）添加 refs，表现和行为与之前一致。
+
+**无状态的函数式组件**
+
+其实在实际业务系统中使用 React 时，我们会写很多只有 render 方法的 React 组件。为了减少冗余的代码量，React v0.14 中引入了 无状态的函数式组件（Stateless functional components） 的概念
+```javascript
+// 一个 ES6 箭头函数定义的无状态函数式组件
+var Aquarium = (props) => {
+  var fish = getFish(props.species);
+  return <Tank>{fish}</Tank>;
+};
+
+// 或者更加简化的版本
+var Aquarium = ({species}) => (
+  <Tank>
+    {getFish(species)}
+  </Tank>
+);
+
+// 最终使用方式: <Aquarium species="rainbowfish" />
+```
+
+**react-tools 及 JSXTransformer.js 已弃用**
+
+**其它变化**
+
+* React.initializeTouchEvents 已弃用
+* 由于 refs 的相关变化（见上文），TestUtils.findAllInRenderedTree 及相关的方法不再接受 DOM 组件作为参数，只能传入自定义的 React 组件
+* props 一旦创建永远不可修改，因此 .setProps 及 .replaceProps 已废弃
+* children 不可以传对象类型，推荐传入数组，或使用 React.createFragment 方法（其实就是转换为了数组）
+* React.addons.classSet 已经移除，使用 classnames package 替代
+
+
+
+[React v0.14 概览](http://undefinedblog.com/react-v0-14/)
+### React 15.4.2
+### React 16
 ## React入门
 
 使用react的时候，需要引用 react.js 和 react-dom.js 这两个js文件以及browser.js。 **并非必需引入browser.js**，引入它的作用是使浏览器支持babel，你可以使用ES2015进行编码。如果你用ES5，可以不引入。
 
-* react.js 是 React 的 核心库
-* react-dom.js 是 提供与 DOM 相关的功能 
+* react.js - **React 的 核心库**
+* react-dom.js - **提供与 DOM 相关的功能 **
 * browser.js 是 **将 JSX 语法转为 JavaScript 语法** ，这一步 很消耗时间 ，实际上线的时候，应该将它放到服务器完成。（转换只要在 浏览器解析之前就可以了） 
 React 独有的 JSX 语法，跟 JavaScript 不兼容。 凡是使用 JSX 的地方，都要加上 type="text/babel" 。
 
@@ -51,6 +120,9 @@ React 为每个状态都提供了两种处理函数，will 函数在进入状态
 * componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用
 * shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用 
 
+### props vs state
+
+在React里有两种数据 "模型": props 和 state
 
 
 ## ES6
@@ -79,6 +151,7 @@ ES6入门资料
 [十分详细的React入门实例](https://blog.csdn.net/a153375250/article/details/52667739)
 
 [React架构的静态站点生成器 Gatsby](https://github.com/gatsbyjs/gatsby)
+[React中文文档-chenyitian](https://chenyitian.gitbooks.io/react-docs/content/)
 
 ## 其他
 
