@@ -1,7 +1,7 @@
 [toc]
 # React
 
-## React版本
+## React版本历史
 React版本中比较重点的几个版本介绍
 
 ### jsxtransformer.js、browser.js、babel.js
@@ -12,6 +12,15 @@ React版本中比较重点的几个版本介绍
 但是以上只能用来测试学习react
 生产环境需要借助编译工具事先将jsx编译成js
 对应的这个工具也由react-tool更换为babel
+
+babel.js与browser.js的关系
+babel的浏览器版本为browser.js
+
+Babel是React团队选择的在使用React过程中转换ES*和JSX为ES5语句的工具
+
+实际上，Babel的主要用途并非一个JSX语句转换器。Babel主要用途是一个JavaScript转换器，它可以转换各种ES*代码为浏览器可识别的ES代码。就目前来说，Babel主要会转换ES6和ES7语句为ES5语句，转换JSX看起来倒像是其的一个附加功能。
+
+![](media/15249119833756.jpg)
 
 
 ### React 0.14
@@ -76,7 +85,8 @@ var Aquarium = ({species}) => (
 
 * react.js - **React 的 核心库**
 * react-dom.js - **提供与 DOM 相关的功能 **
-* browser.js 是 **将 JSX 语法转为 JavaScript 语法** ，这一步 很消耗时间 ，实际上线的时候，应该将它放到服务器完成。（转换只要在 浏览器解析之前就可以了） 
+* browser.js 是 **将 JSX 语法转为 JavaScript 语法** ，这一步 很消耗时间 ，实际上线的时候，应该将它放到服务器完成。（转换只要在 浏览器解析之前就可以了）
+* babel.min.js - Babel 可以将 ES6 代码转为 ES5 代码，这样我们就能在目前不支持 ES6 浏览器上执行 React 代码。Babel 内嵌了对 JSX 的支持。通过将 Babel 和 babel-sublime 包（package）一同使用可以让源码的语法渲染上升到一个全新的水平 
 React 独有的 JSX 语法，跟 JavaScript 不兼容。 凡是使用 JSX 的地方，都要加上 type="text/babel" 。
 
 browser.js 是Babel提供的转换器脚本，可以在浏览器运行。用户的ES6脚本放在 script 标签之中，但是要注明 type="text/babel" 。
