@@ -1,5 +1,16 @@
 [toc]
 # React
+React 的核心思想是：封装组件，各个组件维护自己的状态和 UI，当状态变更，自动重新渲染整个组件。
+
+基于这种方式的一个直观感受就是我们不再需要不厌其烦地来回查找某个 DOM 元素，然后操作 DOM 去更改 UI。
+
+React 大体包含下面这些概念：
+
+* 组件
+* JSX
+* Virtual DOM
+* Data Flow
+
 
 ## React版本历史
 React版本中比较重点的几个版本介绍
@@ -100,16 +111,25 @@ React 组件使用一个名为** render() **的方法，该方法返回一颗 
 ### 核心概念
 
 #### 组件
+
+可以这么说，一个 React 应用就是构建在 React 组件之上的。
+
+props 是组件包含的两个核心概念之一，另一个是 state。可以把 props 看作是组件的配置属性，在组件内部是不变的，只是在调用这个组件的时候传入不同的属性来定制显示这个组件。
+
 [React创建组件的三种方式及其区别](https://www.cnblogs.com/wonyun/p/5930333.html)
 
 1. 获取属性的值用的是this.props.属性名
 2. 创建的组件名称首字母必须大写。
-3. 为元素添加css的class时，要用className。
+3. 为元素添加css的class时，要用**className**。
 4. 组件的style属性的设置方式也值得注意，要写成style==={{==width: this.state.witdh==}}==。
 5. getInitialState函数必须有返回值，可以是NULL或者一个对象。
 6. 访问state的方法是this.state.属性名。
 7. 修改状态值要用setState方法。
 8. 变量用{}包裹，不需要再加双引号。
+
+
+**style 属性接受由 CSS 属性构成的 JS 对象**
+
 
 **组件的生命周期**
 组件的生命周期分成三个状态：
@@ -119,8 +139,12 @@ React 组件使用一个名为** render() **的方法，该方法返回一颗 
 * Unmounting：已移出真实 DOM 
 React 为每个状态都提供了两种处理函数，will 函数在进入状态之前调用，did 函数在进入状态之后调用，三种状态共计五种处理函数。
 
-* componentWillMount()
+* componentWillMount() 装载组件
+只会在装载之前调用一次，在 render 之前调用，你可以在这个方法里面调用 setState 改变状态
+
 * componentDidMount()
+只会在装载完成之后调用一次，在 render 之后调用
+
 * componentWillUpdate(object nextProps, object nextState)
 * componentDidUpdate(object prevProps, object prevState)
 * componentWillUnmount()
@@ -130,10 +154,31 @@ React 为每个状态都提供了两种处理函数，will 函数在进入状态
 * componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用
 * shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用 
 
+**getInitialState**
+初始化 this.state 的值，只在组件装载之前调用一次。
+
+**getDefaultProps**
+只在组件创建时调用一次并缓存返回的对象；
+因为这个方法在实例初始化之前调用，所以在这个方法里面不能依赖 this 获取到这个组件的实例。
+
+**render**
+组装生成这个组件的 HTML 结构（使用原生 HTML 标签或者子组件），也可以返回 null 或者 false
+
 ### props vs state
 
-在React里有两种数据 "模型": props 和 state
+在React里有两种数据 "模型": props 和 state，它们同时也是组件的两个核心概念
 
+props 就是组件的属性，由外部通过 JSX 属性传入设置，一旦初始设置完成，就可以认为 this.props 是不可更改的，所以不要轻易更改设置 this.props 里面的值（虽然对于一个 JS 对象你可以做任何事）。
+
+state 是组件的当前状态，可以把组件简单看成一个“状态机”，根据状态 state 呈现不同的 UI 展示。
+一旦状态（数据）更改，组件就会自动调用 render 重新渲染 UI，这个更改的动作会通过 this.setState 方法来触发。
+
+**划分状态数据**
+一条原则：让组件尽可能地少状态。
+这样组件逻辑就越容易维护。
+
+什么样的数据属性可以当作状态？
+当更改这个状态（数据）需要更新组件 UI 的就可以认为是 state
 
 ## ES6
 涉及到的常用知识点
