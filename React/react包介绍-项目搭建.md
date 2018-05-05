@@ -19,12 +19,32 @@ redux (store.routing)  ↔  react-router-redux  ↔  history (history.l
 **The picture of redux-router would look more like this:**
 redux (store.router)  ↔  redux-router  ↔  react-router (via RouterContext)
 ## react-router-dom
-
+https://github.com/ReactTraining/react-router
 ## react-redux
 http://redux.js.org/docs/basics/UsageWithReact.html
 
 # 项目搭建
 
-## creact-react-app整合router和redux
+## creact-react-app配合router和redux
+
+
+## 利用create-react-app结合react-redux、react-router4构建单页应用
+1.创建项目：
+　　a.全局安装create-react-app: npm  install  create-react-app  -g
+       b.执行create-react-app  my-projectName创建自己的项目，完成之后npm run  start即可启动项目。
+2.引入组件库、插件配置等:
+　　a.执行npm install  antd-mobile  --save安装组件库
+　　b.执行npm install  babel-plugin-import  --save安装按需加载插件
+　　c.执行npm  run  eject  弹出个性化配置，在package.json中的babel配置项添加按需加载插件配置:
+![](media/15255107198686.jpg)
+3.引入redux、react-redux
+　　a.执行npm install  redux  --save安装redux 
+　　b.执行npm install  redux-thunk安装thunk插件，使redux可处理异步操作
+　　c.执行npm install  react-redux  --save安装react-redux简化参数传递
+　　d.执行npm  install  babel-plugin-transform-decorators-legacy --save-dev安装此插件支持connect的装饰器写法
+　
+4.引入react-router4
+　　a.执行npm  install  react-router-dom  --save
+
 
 
