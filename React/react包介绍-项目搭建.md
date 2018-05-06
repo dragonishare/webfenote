@@ -24,6 +24,7 @@ https://github.com/ReactTraining/react-router
 http://redux.js.org/docs/basics/UsageWithReact.html
 
 # 项目搭建
+create-react-app 自动创建的项目是基于 Webpack + ES6 
 
 ## creact-react-app配合router和redux
 
@@ -46,5 +47,22 @@ http://redux.js.org/docs/basics/UsageWithReact.html
 4.引入react-router4
 　　a.执行npm  install  react-router-dom  --save
 
+
+# react-redux流程
+
+## 目录结构组织
+使用ducks方式组织redux目录结构
+https://www.jianshu.com/p/324fd1c124ad
+https://segmentfault.com/a/1190000010915166
+
+上面的有点复杂，简化版的流程是：
+一、Provider组件接受redux的store作为props，然后通过context往下传。
+二、connect函数收到Provider传出的store，然后接受三个参数mapStateToProps，mapDispatchToProps和组件，并将state和actionCreator以props传入组件，这时组件就可以调用actionCreator函数来触发reducer函数返回新的state，connect监听到state变化调用setState更新组件并将新的state传入组件。
+connect可以写的非常简洁，mapStateToProps，mapDispatchToProps只不过是传入的回调函数，connect函数在必要的时候会调用它们，名字不是固定的，甚至可以不写名字。
+简化版本：connect(state => state, action)(Component);
+
+
+![](media/15256167520246.jpg)
+在Redux中，所有的数据（比如state）被保存在一个被称为store的容器中 → 在一个应用程序中只能有一个。store本质上是一个状态树，保存了所有对象的状态。任何UI组件都可以直接从store访问特定对象的状态。要通过本地或远程组件更改状态，需要分发一个action。分发在这里意味着将可执行信息发送到store。当一个store接收到一个action，它将把这个action代理给相关的reducer。reducer是一个纯函数，它可以查看之前的状态，执行一个action并且返回一个新的状态。
 
 
