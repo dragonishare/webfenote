@@ -1,6 +1,8 @@
-[TOC]
 
 # react包介绍
+
+[TOC]
+
 
 ## react-redux和react-router-redux有什么区别
 
