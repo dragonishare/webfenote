@@ -50,12 +50,15 @@ create-react-app 自动创建的项目是基于 Webpack + ES6
 
 # react-redux流程
 
+redux 分为三大部分，store ， action ，reducer
+
 ## 目录结构组织
 使用ducks方式组织redux目录结构
 https://www.jianshu.com/p/324fd1c124ad
 https://segmentfault.com/a/1190000010915166
 
-上面的有点复杂，简化版的流程是：
+## 流程
+简化版的流程是：
 一、Provider组件接受redux的store作为props，然后通过context往下传。
 二、connect函数收到Provider传出的store，然后接受三个参数mapStateToProps，mapDispatchToProps和组件，并将state和actionCreator以props传入组件，这时组件就可以调用actionCreator函数来触发reducer函数返回新的state，connect监听到state变化调用setState更新组件并将新的state传入组件。
 connect可以写的非常简洁，mapStateToProps，mapDispatchToProps只不过是传入的回调函数，connect函数在必要的时候会调用它们，名字不是固定的，甚至可以不写名字。
