@@ -1,8 +1,7 @@
 
-# react包介绍
-
 [TOC]
 
+# react包介绍
 
 ## react-redux和react-router-redux有什么区别
 
@@ -52,6 +51,28 @@ create-react-app 自动创建的项目是基于 Webpack + ES6
 　　a.执行npm  install  react-router-dom  --save
 
 
+## 配置信息
+
+### .prettierrc 格式化插件配置
+https://prettier.io/playground/
+
+格式化插件配置
+```
+{
+  "printWidth": 120,               // 换行字符串阈值
+  "semi": true,                    // 句末加分号
+  "singleQuote": true,             // 用单引号
+  "trailingComma": "none",         // 最后一个对象元素加逗号
+  "bracketSpacing": true,          // 对象，数组加空格
+  "jsxBracketSameLine": false,     // jsx > 是否另起一行
+  "arrowParens": "avoid",          // (x) => {} 是否要有小括号
+  "requirePragma": false,          // 是否要注释来决定是否格式化代码
+  "proseWrap": "preserve"          // 是否要换行
+}
+```
+
+
+
 # react-redux流程
 
 redux 分为三大部分，store ， action ，reducer
@@ -73,22 +94,16 @@ connect可以写的非常简洁，mapStateToProps，mapDispatchToProps只不过�
 在Redux中，所有的数据（比如state）被保存在一个被称为store的容器中 → 在一个应用程序中只能有一个。store本质上是一个状态树，保存了所有对象的状态。任何UI组件都可以直接从store访问特定对象的状态。要通过本地或远程组件更改状态，需要分发一个action。分发在这里意味着将可执行信息发送到store。当一个store接收到一个action，它将把这个action代理给相关的reducer。reducer是一个纯函数，它可以查看之前的状态，执行一个action并且返回一个新的状态。
 
 
-## .prettierrc 格式化插件配置
-https://prettier.io/playground/
+### Store
 
-格式化插件配置
-```
-{
-  "printWidth": 120,               // 换行字符串阈值
-  "semi": true,                    // 句末加分号
-  "singleQuote": true,             // 用单引号
-  "trailingComma": "none",         // 最后一个对象元素加逗号
-  "bracketSpacing": true,          // 对象，数组加空格
-  "jsxBracketSameLine": false,     // jsx > 是否另起一行
-  "arrowParens": "avoid",          // (x) => {} 是否要有小括号
-  "requirePragma": false,          // 是否要注释来决定是否格式化代码
-  "proseWrap": "preserve"          // 是否要换行
-}
-```
+
+### Action
+
+Action 是把数据从应用（译者注：这里之所以不叫 view 是因为这些数据有可能是服务器响应，用户输入或其它非 view 的数据 ）传到 store 的有效载荷。它是 store 数据的唯一来源。一般来说你会通过 store.dispatch() 将 action 传到 store。
+
+
+### Reducer
+
+
 
 
