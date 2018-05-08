@@ -93,13 +93,44 @@ connect可以写的非常简洁，mapStateToProps，mapDispatchToProps只不过�
 ![](media/15256167520246.jpg)
 在Redux中，所有的数据（比如state）被保存在一个被称为store的容器中 → 在一个应用程序中只能有一个。store本质上是一个状态树，保存了所有对象的状态。任何UI组件都可以直接从store访问特定对象的状态。要通过本地或远程组件更改状态，需要分发一个action。分发在这里意味着将可执行信息发送到store。当一个store接收到一个action，它将把这个action代理给相关的reducer。reducer是一个纯函数，它可以查看之前的状态，执行一个action并且返回一个新的状态。
 
+* 整个应用的 state 被储存在一棵 object tree 中，并且这个 object tree 只存在于唯一一个 store 中。
+
+* State 是只读的，唯一改变 state 的方法就是触发 action，action 是一个用于描述已发生事件的普通对象。
+
+* 为了描述 action 如何改变 state tree ，你需要编写 reducers。
+
+
 
 ### Store
+
+store 是应用状态 state 的管理者，包含下列四个函数：
+
+* getState() # 获取整个 state
+* dispatch(action) # ※ 触发 state 改变的【唯一途径】※
+* subscribe(listener) # 您可以理解成是 DOM 中的 addEventListener
+* replaceReducer(nextReducer) # 一般在 Webpack Code-Splitting 按需加载的时候用
+
 
 
 ### Action
 
 Action 是把数据从应用（译者注：这里之所以不叫 view 是因为这些数据有可能是服务器响应，用户输入或其它非 view 的数据 ）传到 store 的有效载荷。它是 store 数据的唯一来源。一般来说你会通过 store.dispatch() 将 action 传到 store。
+
+[Redux 入门教程](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html)
+
+
+#### 定义
+
+业界提出以一种标准 action，[叫做 Flux Standard Action](https://github.com/redux-utilities/flux-standard-action)。该标准下的action除了type属性之外，只允许多加（不是必须包含）这三个属性：payload，error，meta。
+```
+let action = {
+    type: 'ACTION_NAME',//大写字母+下划线 
+    payload: <bool | number | string | object>, //action的负载，可以是数据或 error 对象
+    error: <bool>, // 指明该action是否是一个以 error 为负载的action
+    meta: <string> // action元数据， 包含解释该action含义的信息
+}
+```
+
 
 
 ### Reducer
