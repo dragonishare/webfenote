@@ -137,4 +137,218 @@ let action = {
 
 
 
+# 利用create-react-app，一步一步搭框架
+
+## Quick Start
+
+### Prerequisites
+
+Node.js v8.11 or later.
+
+#### 使用的工具及依赖库
+
+* 使用官方脚手架create-react-app，本项目开发时最新1.5.2，[更多前往](https://github.com/facebook/create-react-app)
+* 使用UI组件库[antd 3.5.1](https://ant.design/docs/react/introduce-cn)
+* 依赖库的安装使用react官方推荐的yarn,本项目开发时最新1.5.1，yarn的安装和使用与npm基本类似，[更多前往](https://yarnpkg.com/)
+ yarn常用命令
+
+```
+ yarn add packagenameA // 安装packagenameA，安装 运行环境的依赖
+
+ yarn install //根据package.json安装全部的依赖
+
+ yarn add --dev packagenameB //安装开发环境的依赖
+
+ yarn remove packagenameC //卸载指定包packagenameC
+```
+
+**依赖库**
+
+状态管理redux react-redux redux-thunk、路由管理react-router-dom react-router-redux@next history、superagent请求后端接口ajax库
+
+```
+yarn add redux react-redux redux-thunk superagent react-router-dom react-router-redux@next history
+```
+
+工具库lodash、时间库moment moment-timezone、ui组件库antd
+
+```
+yarn add lodash moment moment-timezone antd
+```
+
+开发环境的依赖安装
+ ```
+ yarn add babel-plugin-import less less-loader --dev
+ yarn add redux-logger redux-devtools-extension --dev
+ ```
+babel-plugin-import: 按需加载antd组件，避免全部加载造成性能问题，主要开发的时候使用
+less less-loader: less文件用到的
+redux-logger redux-devtools-extension: 开发时方便调试使用，[更多前往](https://github.com/yellowfrogCN/reduxDevTools/blob/master/README.md)
+
+#### webpack配置
+
+通过`yarn run eject`命令把create-react-app所有内建的配置暴露出来
+
+**配置babel-plugin-import和less、less-loader**
+
+1、添加antd之后，装babel-plugin-import插件，实现按需加载提高性能，但是需要对webpack.config.dev.js做修改：
+`["import", { "libraryName": "antd", "style": true }]`
+
+ ```
+ //package.json 文件
+ "babel": {
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      ["import", { "libraryName": "antd", "style": true }]
+    ]
+  },
+
+ ```
+
+2、添加less,less-loader之后，同样需要做修改
+使用create-react-app 创建的项目默认不支持less，以下增加less配置的步骤
+
+修改`webpack`配置
+修改 `webpack.config.dev.js` 和 `webpack.config-prod.js` 配置文件
+
+改动1：
+
+/\.css$/ 改为 /\.(css|less)$/,, 修改后如下：
+```
+exclude: [
+  /\.html$/,
+  /\.(js|jsx)$/,
+  /\.(css|less)$/,
+  /\.json$/,
+  /\.bmp$/,
+  /\.gif$/,
+  /\.jpe?g$/,
+  /\.png$/,
+],
+
+ ```
+
+改动2：
+
+test: /\.css$/ 改为 /\.(css|less)$/
+test: /\.css$/ 的 use 数组配置增加 less-loader
+
+ ```
+{
+  test: /\.(css|less)$/,
+  use: [
+    require.resolve('style-loader'),
+    {
+      loader: require.resolve('css-loader'),
+      options: {
+        importLoaders: 1,
+      },
+    },
+    {},
+    {
+      loader: require.resolve('less-loader'), // compiles Less to CSS
+      options: { javascriptEnabled: true }
+    }
+  ],
+},
+
+ ```
+
+**如果运行过程中发现有报less相关的错误，建议把（css|less）拆开两个规则**
+
+3、自动格式化代码配置 formatting-code-automatically
+
+```
+ yarn add husky lint-staged prettier --dev
+ ```
+
+* husky makes it easy to use githooks as if they are npm scripts.
+* lint-staged allows us to run scripts on staged files in git. See this blog post about lint-staged to learn more about it.
+* prettier is the JavaScript formatter we will run before commits.
+
+添加完之后，package.json做如下配置
+
+ ```
+ "scripts": {
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js --env=jsdom",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,json,css}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+
+ ```
+格式化插件配置 参数requirePragma设为true，避免数组和（）换行时合并
+
+
+[更多前往](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#formatting-code-automatically)
+
+
+### Download Codes
+
+```
+git clone 
+```
+
+### Code organization
+
+```
+├── mock                     # 本地模拟数据
+├── public
+│   └── favicon.ico          # Favicon
+├── src
+│   ├── assets               # 本地静态资源image,fonts,icons
+│   ├── common               # 应用公用配置，如导航信息,菜单项
+│   │   ├── menu.js          # 菜单配置
+│   │   └── router.js        # 路由配置
+│   ├── components           # 业务通用组件
+│   ├── e2e                  # 集成测试用例
+│   ├── layouts              # 通用布局
+│   ├── models               # dva model
+│   ├── routes               # 业务页面入口和常用模板
+│   ├── services             # 后台接口服务
+│   ├── utils                # 工具库,（权限，请求）等
+│   ├── g2.js                # 可视化图形配置
+│   ├── theme.js             # 主题配置
+│   ├── index.ejs            # 应用入口HTML 入口模板
+│   ├── index.js             # 应用入口
+│   ├── index.less           # 全局样式
+│   └── router.js            # 路由入口
+├── tests                    # 测试工具
+├── README.md
+└── package.json
+```
+
+### How to run
+
+```bash
+cd fe
+npm install
+npm start         # 访问 http://localhost:8000
+```
+
+### Build
+```bash
+npm run build
+```
+
+## 兼容性
+
+现代浏览器及 IE11
+
+## 使用文档
+
+项目是基于React/dva/antd，更多信息请参考
+
+* [Ant Design Pro](http://pro.ant.design/docs/getting-started)
+* [dva](https://github.com/dvajs/dva)
+
+
 
