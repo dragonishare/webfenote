@@ -299,31 +299,59 @@ git clone
 
 ### Code organization
 
+
 ```
-├── mock                     # 本地模拟数据
+
+├── config                          # 项目配置信息，环境配置，路径配置，webpack配置等
+│   ├── env.js
+│   ├── jest
+│   │   ├── cssTransform.js
+│   │   └── fileTransform.js
+│   ├── paths.js
+│   ├── polyfills.js
+│   ├── webpack.config.dev.js      # webpack开发配置信息
+│   ├── webpack.config.prod.js     # webpack生产配置信息
+│   └── webpackDevServer.config.js
+├── scripts
+│   ├── build.js                   # 构建配置
+│   ├── start.js                   # 开发启动配置
+│   └── test.js                    # 测试用例配置
 ├── public
-│   └── favicon.ico          # Favicon
+│   ├── favicon.ico
+│   ├── index.html                 # 应用入口HTML 入口模板
+│   └── manifest.json
 ├── src
-│   ├── assets               # 本地静态资源image,fonts,icons
-│   ├── common               # 应用公用配置，如导航信息,菜单项
-│   │   ├── menu.js          # 菜单配置
-│   │   └── router.js        # 路由配置
-│   ├── components           # 业务通用组件
-│   ├── e2e                  # 集成测试用例
-│   ├── layouts              # 通用布局
-│   ├── models               # dva model
-│   ├── routes               # 业务页面入口和常用模板
-│   ├── services             # 后台接口服务
-│   ├── utils                # 工具库,（权限，请求）等
-│   ├── g2.js                # 可视化图形配置
-│   ├── theme.js             # 主题配置
-│   ├── index.ejs            # 应用入口HTML 入口模板
-│   ├── index.js             # 应用入口
-│   ├── index.less           # 全局样式
-│   └── router.js            # 路由入口
-├── tests                    # 测试工具
+│   ├── assets                     # 项目静态资源image,fonts,icons
+│   │   └── logo.svg
+│   ├── common                     # 应用公用配置，如导航信息,菜单项
+│   │   ├── Menu.js                # 菜单配置
+│   │   └── Routes.js              # 路由配置
+│   ├── components                 # 业务通用组件
+│   │   ├── Breadcrumb             # 面包屑
+│   │   ├── LayoutContent          # 主体区域内容
+│   │   ├── LayoutFooter           # 主体区域底部
+│   │   ├── LayoutHeader           # 主体区域顶部
+│   │   └── SideBar                # 侧边栏
+│   ├── pages                      # 业务页面入口和常用模板
+│   │   ├── App                    # 组件主入口文件
+│   │   ├── Authorized             # 权限组件
+│   │   ├── Home                   # 主体布局组件
+│   │   └── Login                  # 登录组件
+│   ├── redux                      # 状态管理相关
+│   │   ├── Modules                # 把actionTypes, actions, reducers写在一个文件中，文件名与组件名保持一致
+│   │   └── Store.js               # 全局唯一store
+│   ├── services                   # 后台接口服务
+│   │   └── request.js             # 后台请求
+│   ├── views                      # 当多个项目时，放具体项目的内容，项目文件夹下按照views同级目录进行自定义
+│   │   └── security
+│   ├── index.css
+│   ├── index.js                   # 整个项目的入口文件
+│   └── registerServiceWorker.js   # 生产环境下，缓存资源到本地，提升访问速度
 ├── README.md
-└── package.json
+├── intro.md
+├── package.json
+├── yarn-error.log
+└── yarn.lock
 ```
 
 ### How to run
