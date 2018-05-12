@@ -13,3 +13,8 @@ dangerouslySetInnerHTML={{
 第一{}代表jsx语法开始，第二个是代表dangerouslySetInnerHTML接收的是一个对象键值对
 
 
+* create-react-app 创建项目时，目录名不要使用大写，这样作只要是为了严谨性，因为在Linux下是严格区分大小写的。
+
+* `npm install --save` 把依赖包名称添加到 package.json 文件 dependencies 键下，--save-dev 则添加到 package.json 文件 devDependencies 键下;dependencies是运行时依赖，devDependencies是开发时的依赖;正常使用npm install时，会下载dependencies和devDependencies中的模块，当使用npm install –production或者注明NODE_ENV变量值为production时，只会下载dependencies中的模块。
+
+
