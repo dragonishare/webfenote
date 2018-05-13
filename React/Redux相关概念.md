@@ -1,5 +1,7 @@
 # Redux相关概念
 
+[随机获取一个用户信息](https://randomuser.me/)
+
 ## Redux起源
 
 React 只是 DOM 的一个抽象层，并不是 Web 应用的完整解决方案。有两个方面，它没涉及。
