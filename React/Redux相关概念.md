@@ -72,6 +72,17 @@ reducer:  返回state（或者说是返回数据）
 如果要将 Redux 和 React 结合起来使用，就还需要一些额外的工具，其中最重要的莫过于 react-redux 了。
 
 react-redux 提供了两个重要的对象， **Provider** 和 **connect** ，前者使 React 组件可被连接（connectable），后者把 React 组件和 Redux 的 store 真正连接起来。
+
+## Redux 和 React-redux区别
+
+[redux](https://github.com/reduxjs/redux): Predictable state container for JavaScript apps 
+ + 提供 **createStore**
+ 
+
+[react-redux](https://github.com/reduxjs/react-redux): Official React bindings for Redux
+ + 提供 **Provider** 和 **connect**
+
+
 ## 参考资料
 [Redux 入门教程](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html)
 [react-redux 之 connect 方法详解](https://blog.csdn.net/u010977147/article/details/53412381)
