@@ -1,3 +1,9 @@
+# 如何成为一个伟大的JavaScript程序员
+
+https://yq.aliyun.com/articles/200513?spm=a2c4e.11153940.blogcont586695.41.4814562bkscbWk
+
+https://yq.aliyun.com/articles/304137?spm=a2c4e.11153940.blogcont586695.42.4814562bkscbWk
+
 ##
 
 >
