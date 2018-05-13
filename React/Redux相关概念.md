@@ -53,9 +53,27 @@ Redux 有很好的[文档](https://redux.js.org/)，还有配套的小视频（[
 ![](media/15235004676150.jpg)
 图上可以看出，store，state，reducer，action其实最后都只有一个，我们只是为了代码逻辑将其分为多个，层次分明，便于开发和阅读。
 
+一句话总结，View只负责UI界面，不存在私有的state和操作，redux将View中的state和操作集中起来在store中管理，然后通过props将修改后的state内容传递给View，界面发生变化。用户操作界面，View通过dispatch执行相关操作，然后将ActionType和Data交由reducer函数，根据ActionType和Data修改state。
+
+
 [一幅图明白React-Redux的原理](https://juejin.im/post/5acdbe8f51882548fe4a7af1)
 
+
+![](media/15262199727015.jpg)
+
+
+action: 行为和动作
+reducer:  返回state（或者说是返回数据）
+
+
+
+## React-redux
+
+如果要将 Redux 和 React 结合起来使用，就还需要一些额外的工具，其中最重要的莫过于 react-redux 了。
+
+react-redux 提供了两个重要的对象， **Provider** 和 **connect** ，前者使 React 组件可被连接（connectable），后者把 React 组件和 Redux 的 store 真正连接起来。
 ## 参考资料
 [Redux 入门教程](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html)
+[react-redux 之 connect 方法详解](https://blog.csdn.net/u010977147/article/details/53412381)
 
 
