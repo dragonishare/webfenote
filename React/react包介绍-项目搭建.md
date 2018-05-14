@@ -192,6 +192,7 @@ redux-logger redux-devtools-extension: 开发时方便调试使用，[更多前�
 **配置babel-plugin-import和less、less-loader**
 
 1、添加antd之后，装babel-plugin-import插件，实现按需加载提高性能，但是需要对webpack.config.dev.js做修改：
+
 `["import", { "libraryName": "antd", "style": true }]`
 
  ```
@@ -204,7 +205,6 @@ redux-logger redux-devtools-extension: 开发时方便调试使用，[更多前�
       ["import", { "libraryName": "antd", "style": true }]
     ]
   },
-
  ```
 
 2、添加less,less-loader之后，同样需要做修改
@@ -215,7 +215,8 @@ redux-logger redux-devtools-extension: 开发时方便调试使用，[更多前�
 
 改动1：
 
-/\.css$/ 改为 /\.(css|less)$/,, 修改后如下：
+`/\.css$/ 改为 /\.(css|less)$/`, 修改后如下：
+
 ```
 exclude: [
   /\.html$/,
@@ -227,15 +228,14 @@ exclude: [
   /\.jpe?g$/,
   /\.png$/,
 ],
-
- ```
+```
 
 改动2：
 
 test: /\.css$/ 改为 /\.(css|less)$/
 test: /\.css$/ 的 use 数组配置增加 less-loader
 
- ```
+```
 {
   test: /\.(css|less)$/,
   use: [
@@ -254,15 +254,17 @@ test: /\.css$/ 的 use 数组配置增加 less-loader
   ],
 },
 
- ```
+```
+
 
 **如果运行过程中发现有报less相关的错误，建议把（css|less）拆开两个规则**
+
 
 3、自动格式化代码配置 formatting-code-automatically
 
 ```
- yarn add husky lint-staged prettier --dev
- ```
+yarn add husky lint-staged prettier --dev
+```
 
 * husky makes it easy to use githooks as if they are npm scripts.
 * lint-staged allows us to run scripts on staged files in git. See this blog post about lint-staged to learn more about it.
@@ -352,6 +354,7 @@ git clone
 ├── package.json
 ├── yarn-error.log
 └── yarn.lock
+
 ```
 
 ### How to run
