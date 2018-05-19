@@ -17,7 +17,7 @@ React版本中比较重点的几个版本介绍
 
 ### jsxtransformer.js、browser.js、babel.js
 
-在react 0.14前，浏览器端实现对jsx的编译依赖jsxtransformer.js 
+在react 0.14前，浏览器端实现对jsx的编译依赖JSXTransformer.js 
 在react 0.14后，这个依赖的库改为browser.js
 页面script标签的type也由text/jsx改为text/babel
 但是以上只能用来测试学习react
