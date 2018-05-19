@@ -12,3 +12,23 @@
 
 React Developer Tools
 
+## video在chrome大于53的高版本出现下载按钮
+
+一般浏览器不会出现下载按钮，，只有谷歌浏览器会
+
+去掉下载按钮
+```
+video::-internal-media-controls-download-button {
+    display:none;
+}
+
+video::-webkit-media-controls-enclosure {
+    overflow:hidden;
+}
+
+video::-webkit-media-controls-panel {
+    width: calc(100% + 30px); 
+}
+
+```
+
