@@ -3,16 +3,15 @@
 
 1. **React正常显示html代码**
 
-让内容换行显示时，`<br />`的代码在页面中不换行，而是直接显示`<br />`
-
-React属性dangerouslySetInnerHTML，用来在一个标签中插入许多个标签
-```
-dangerouslySetInnerHTML={{
-    __html: '<h3>hahhah</h3>'
-    }}>
-```
-第一{}代表jsx语法开始，第二个是代表dangerouslySetInnerHTML接收的是一个对象键值对
-
+    让内容换行显示时，`<br />`的代码在页面中不换行，而是直接显示`<br />`
+    
+    React属性dangerouslySetInnerHTML，用来在一个标签中插入许多个标签
+    ```
+    dangerouslySetInnerHTML={{
+        __html: '<h3>hahhah</h3>'
+        }}>
+    ```
+    第一`{}`代表jsx语法开始，第二个是代表`dangerouslySetInnerHTML`接收的是一个对象键值对
 
 2. **create-react-app 创建项目时，目录名不要使用大写**，这样作只要是为了严谨性，因为在Linux下是严格区分大小写的。
 
@@ -20,10 +19,11 @@ dangerouslySetInnerHTML={{
 
 4. **setState()设置完之后不能立即取值**，可通过回调或者在声明周期函数中处理
 
-setState()不是同步的
+    setState()不是同步的
 
 5. 
-    ### 通过class方式创建组件
+    
+### 通过class方式创建组件
     
     事件处理方法要手动bind(this),有三种方式：
     
