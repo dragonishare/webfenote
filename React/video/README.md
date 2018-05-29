@@ -74,3 +74,16 @@ this四种用法，详情：慕课网“JavaScript深入浅出”-this节
 
 ### 组件的事件处理
 
+事件传递参数有两种形式
+
+1. 通过箭头函数` <button onClick={() => this.handlerClick('参数')}>点击</button>`
+2. 通过bind函数 ` <button onClick={this.handlerClick.bind(this,'参数')}>点击</button>`
+
+
+
+### 调试错误方式
+
+1. `console.log()`打印出相应的内容
+2. 浏览器打断点或者代码中加**debugger**打断点
+3. 
+
