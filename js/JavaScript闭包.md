@@ -50,8 +50,8 @@ JavaScript 闭包的本质源自两点，词法作用域和函数当作值传递
 * 【JavaScript权威指南（6rd）】
 * 【JavaScript高级程序设计（3rd）】
 * 【你不知道的JavaScript上】
-* [学习Javascript闭包（Closure）
-](http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html) 
+* [学习Javascript闭包（Closure）](http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html) 
 * [闭包-维基百科](https://zh.wikipedia.org/wiki/%E9%97%AD%E5%8C%85_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6))
+* [全面理解Javascript闭包和闭包的几种写法及用途](https://www.cnblogs.com/yunfeifei/p/4019504.html)
 
 
