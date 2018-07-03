@@ -37,8 +37,8 @@ JavaScript 闭包的本质源自两点，词法作用域和函数当作值传递
 它的最大用处有两个，一个是**可以读取函数内部的变量**，另一个就是**让这些变量的值始终保持在内存中**。
 
 1. setTimeout/setInterval
-2.	 回调函数（callback）
-3.	 事件句柄（event handle）
+	.	 回调函数（callback）
+	.	 事件句柄（event handle）
 
 ##   闭包的缺点
 
