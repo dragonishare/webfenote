@@ -144,6 +144,11 @@ jsformat 是 sublime 上 js 格式化比较好用的插件之一，通过修改�
 * JavaScript Next
 * HTML-CSS-JS Prettify
 * GitGutter 这是一个小巧有用的插件，它会告诉你自上次git commit以来已经改变的行。一个指示器显示在行号的旁边。
+* AllAutocomplete
+* git
+* autofilename 路径自动补全
+
+
 
 
 
