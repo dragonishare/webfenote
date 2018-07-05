@@ -133,19 +133,48 @@ jsformat 是 sublime 上 js 格式化比较好用的插件之一，通过修改�
 #### 其他插件推荐
 
 * Package Control
+
 * Terminal
+
+  安装完就打开它的 `setting - user`
+
+  因为需要支持`iTerm2`,所以修改为
+
+  ```json
+  {
+      "terminal": "iTerm2-v3.sh",
+      "parameters": ["--open-in-tab"] //在终端的tab打开
+  }
+  ```
+
+  打开Sublime,快捷键`control + command + t`就可以打开终端，并且是进入了文件所在的目录
+
+  
+
 * SublimeCodeIntel
+
 * A File Icon
+
 * SideBarEnhancements
+
 * JsFormat
+
 * Emmet
+
 * DocBlockr
+
 * Boxy Theme
+
 * JavaScript Next
+
 * HTML-CSS-JS Prettify
+
 * GitGutter 这是一个小巧有用的插件，它会告诉你自上次git commit以来已经改变的行。一个指示器显示在行号的旁边。
+
 * AllAutocomplete
+
 * git
+
 * autofilename 路径自动补全
 
 react环境插件
@@ -213,4 +242,12 @@ Emmet支持jsx，tab补全，**`[]`不能少**
 
 
 
+## 更改 zsh 配置文件，在Mac终端使用sublime、vscode、atom快速打开文件或目录
 
+```bash
+alias atom='/Applications/Atom.app/Contents/MacOS/Atom'
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+alias code='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code'
+```
+
+[更改 zsh 配置文件，在Mac终端使用sublime、vscode、atom快速打开文件或目录](http://qiubaiying.top/2017/03/17/Mac%E7%BB%88%E7%AB%AF(zsh)%E4%B8%8B%E7%94%A8%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E5%99%A8%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95/)
