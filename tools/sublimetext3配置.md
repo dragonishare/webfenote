@@ -102,8 +102,8 @@ jsformat 是 sublime 上 js 格式化比较好用的插件之一，通过修改�
 ```
 {
   "e4x": true,
-  // jsformat options
   "format_on_save": true,
+  "format_on_save_extensions": ["js", "json", "jsx"]
 }
 ```
 即可保存时自动格式化，并支持 jsx 类型文件。
