@@ -13,7 +13,7 @@
 https://reacttraining.com/react-router/
 
 ## redux-router
- 
+
 https://github.com/acdlite/redux-router
 
 **The README for react-router-redux has a useful picture included here:**
@@ -27,7 +27,7 @@ https://github.com/ReactTraining/react-router
 http://redux.js.org/docs/basics/UsageWithReact.html
 
 # 项目搭建
-create-react-app 自动创建的项目是基于 Webpack + ES6 
+create-react-app 自动创建的项目是基于 Webpack + ES6
 
 ## creact-react-app配合router和redux
 
@@ -60,10 +60,11 @@ https://prettier.io/playground/
 ```
 {
   "printWidth": 120,               // 换行字符串阈值
+  "tabWidth": 2,
   "semi": true,                    // 句末加分号
   "singleQuote": true,             // 用单引号
   "trailingComma": "none",         // 最后一个对象元素加逗号
-  "bracketSpacing": true,          // 对象，数组加空格
+  "bracketSpacing": true,          // 在对象字面量声明所使用的的花括号后（{）和前（}）输出空格
   "jsxBracketSameLine": false,     // jsx > 是否另起一行
   "arrowParens": "avoid",          // (x) => {} 是否要有小括号
   "requirePragma": false,          // 是否要注释来决定是否格式化代码
@@ -287,7 +288,7 @@ yarn add husky lint-staged prettier --dev
   },
 
  ```
-格式化插件配置 参数requirePragma设为true，避免数组和（）换行时合并
+????格式化插件配置 参数requirePragma设为true，避免数组和（）换行时合并
 
 
 [更多前往](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#formatting-code-automatically)
@@ -296,7 +297,7 @@ yarn add husky lint-staged prettier --dev
 ### Download Codes
 
 ```
-git clone 
+git clone
 ```
 
 ### Code organization

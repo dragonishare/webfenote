@@ -30,7 +30,7 @@ SublimeServer会启动一个轻量级的，静态的WEB服务器，让你在文�
     * 在web服务器下编辑html文件，在浏览器中输入http://localhost访问文件；
     * 然后点击 Chrome浏览器右边的“LiveReload”图标中间小圆点由虚变实，表示启动插件；
     * 修改html文件内容按 ctr+s 保存，即可在chrome里面看到实时更新。
-    
+
 #### Sublime Text 3 搭建 React.js 开发环境
 **1. Babel**
 ----
@@ -47,47 +47,47 @@ emmet 作为前端开发必备插件之一非常方便快捷，默认情况下�
 配置方法：打开 preferences -> Key bindings - Users，把下面代码复制到[]内部。
 ```
 {
-  "keys": ["tab"], 
-  "command": "expand_abbreviation_by_tab", 
+  "keys": ["tab"],
+  "command": "expand_abbreviation_by_tab",
 
-  // put comma-separated syntax selectors for which 
-  // you want to expandEmmet abbreviations into "operand" key 
+  // put comma-separated syntax selectors for which
+  // you want to expandEmmet abbreviations into "operand" key
   // instead of SCOPE_SELECTOR.
   // Examples: source.js, text.html - source
   "context": [
     {
-      "operand": "source.js", 
-      "operator": "equal", 
-      "match_all": true, 
+      "operand": "source.js",
+      "operator": "equal",
+      "match_all": true,
       "key": "selector"
-    }, 
+    },
 
     // run only if there's no selected text
     {
-      "match_all": true, 
+      "match_all": true,
       "key": "selection_empty"
     },
 
     // don't work if there are active tabstops
     {
-      "operator": "equal", 
-      "operand": false, 
-      "match_all": true, 
+      "operator": "equal",
+      "operand": false,
+      "match_all": true,
       "key": "has_next_field"
-    }, 
+    },
 
     // don't work if completion popup is visible and you
     // want to insert completion with Tab. If you want to
-    // expand Emmet with Tab even if popup is visible -- 
+    // expand Emmet with Tab even if popup is visible --
     // remove this section
     {
-      "operand": false, 
-      "operator": "equal", 
-      "match_all": true, 
+      "operand": false,
+      "operator": "equal",
+      "match_all": true,
       "key": "auto_complete_visible"
-    }, 
+    },
     {
-      "match_all": true, 
+      "match_all": true,
       "key": "is_abbreviation"
     }
   ]
@@ -149,7 +149,7 @@ jsformat 是 sublime 上 js 格式化比较好用的插件之一，通过修改�
 
   打开Sublime,快捷键`control + command + t`就可以打开终端，并且是进入了文件所在的目录
 
-  
+
 
 * SublimeCodeIntel
 
@@ -251,3 +251,18 @@ alias code='/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/co
 ```
 
 [更改 zsh 配置文件，在Mac终端使用sublime、vscode、atom快速打开文件或目录](http://qiubaiying.top/2017/03/17/Mac%E7%BB%88%E7%AB%AF(zsh)%E4%B8%8B%E7%94%A8%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E5%99%A8%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95/)
+
+
+## ESLint 代码检查
+
+ESLint结合编辑器实现时实校验
+1. 首先安装两个插件
+SublimeLinter： 所有linter的基础框架
+SublimeLinter-eslint： 具体linter需要的，这里是eslint
+
+2. 接着设置SublimeLinter使用ESLint来校验
+Sublime Text --> preferences --> Package settings --> Sublime Linter --> settings - User。该按钮会打开一个配置文件，给该配置文件添加添加如下设置:
+```
+
+```
+
