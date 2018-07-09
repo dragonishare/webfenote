@@ -266,3 +266,9 @@ Sublime Text --> preferences --> Package settings --> Sublime Linter --> setting
 
 ```
 
+## 显示sublime的字体
+view菜单下show console输入：
+ `view.settings().get('font_face')`
+ 
+ 默认主题Monokai,默认字体Menlo
+
