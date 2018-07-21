@@ -10,3 +10,14 @@ Web 服务并不会解析 `hash`，也就是说 `#` 后的内容 Web 服务�
 
 history 是 HTML5 才有的新 API，可以用来操作浏览器的 session history (会话历史)
 
+
+
+## React-router4 
+
+* BrowserRouter/HashRouter
+* Route
+* Link
+* Switch
+* Redirect
+
+
