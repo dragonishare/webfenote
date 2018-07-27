@@ -11,6 +11,11 @@ React 大体包含下面这些概念：
 * Virtual DOM
 * Data Flow
 
+## React重要特点
+* 组件化
+* Virtual DOM
+* 函数式编程
+* Data Flow
 
 ## React版本历史
 React版本中比较重点的几个版本介绍
