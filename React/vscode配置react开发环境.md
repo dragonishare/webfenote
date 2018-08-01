@@ -9,9 +9,9 @@
 因此开发的时候，通过webpack的热加载是可以看到相应的规范报告的，需要根据提示**手动解决**
 
 ### 可以通过prettier,husky等可以在git add或者commit的时候，格式化
- 
+
  通过prettier进行格式化，需要在项目根目录新建.prettierrc文件及设置相关的规则
- 
+
 ## 2.vscode编辑器配置eslint及代码格式化
 
 在开发阶段希望实时显示代码检查，同时希望保存的时候自动格式化，可以安装vscode对应的插件
@@ -34,6 +34,35 @@
 ```
 
 
+## prettier和ESLint一起使用
+很多项目都会使用ESLint来提高代码的质量，有两种方式能够集成Prettier和ESLint，你也可以单独或同时使用它们。
 
- 
+### 使用ESLint运行Prettier
+
+如果你已经在你的项目中使用ESLint并且想要只通过单独一条命令来执行你的所有的代码检查的话，你可以使用ESLint来为你运行Prettier。
+
+只需要使用[eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)来添加Prettier作为ESLint的规则配置。
+
+`yarn add --dev prettier eslint-plugin-prettier`
+
+配置信息.eslintrc.json
+```
+{
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}
+```
+### 关闭ESLint的格式规则
+
+你是否通过ESLint来运行Prettier，又或者是单独运行两个工具，那你大概只想要每个格式问题只出现一次，而且你特别不想要ESLint仅仅是和Prettier有简单的不同和偏好而报出“问题”。
+
+所以你大概想要禁用冲突的规则（当保留其他Prettier不关心的规则时）最简单的方式是使用[eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)。它可以添加到任何ESLint配置上面。
+
+`yarn add --dev eslint-config-prettier`
+
+
+
+
 
