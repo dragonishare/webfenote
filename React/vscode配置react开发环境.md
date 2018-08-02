@@ -33,7 +33,7 @@
   },
 ```
 
-### vs code 配置eslint和prettier
+### vs code 配置eslint和prettier，开发时实时显示代码检查，保存时自动格式化
 
 
 * 安装插件：[ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
