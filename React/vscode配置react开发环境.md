@@ -1,5 +1,8 @@
 使用eslint需要全局安装eslint包，或者在本地、本项目安装
 
+eslint: 语法规则、代码风格检查工具，确保语法正确、风格统一
+
+
 ## 1.通过create-react-app脚手架生成项目
 
 * 生成的项目中默认已经安装了eslint及相关的依赖包，使用react默认的eslint配置规则即可
