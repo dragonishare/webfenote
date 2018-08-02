@@ -90,6 +90,6 @@ eslint 主要还是负责代码规则校验，prettier 只调整代码风格，�
 ## 参考
 
 * [梳理前端开发使用eslint和prettier来检查和格式化代码问题](http://web.jobbole.com/94786/)
-
+* [利用 ESlint、lint-staged 半自动提升项目代码质量](https://github.com/zhangyu921/blog/issues/4)
 
 

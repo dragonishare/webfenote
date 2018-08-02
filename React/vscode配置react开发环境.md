@@ -19,7 +19,7 @@
 * eslint插件，默认是启动的 `"eslint.enable": true`
 * 开启eslint自动修改，设置 `"eslint.autoFixOnSave": true`
 
-* 安装prettier-code formatter插件
+* 安装`prettier-code formatter`插件
 
 如果以上配置不起作用，还需要对项目安装依赖包`yarn add --dev eslint-plugin-prettier`
 同时修改package.json里边的配置
@@ -33,6 +33,20 @@
   },
 ```
 
+### vs code 配置eslint和prettier
+
+
+* 安装插件：[ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+* vscode setting配置
+
+```
+{  "prettier.eslintIntegration": true,  "eslint.autoFixOnSave": true,  "editor.formatOnSave": true}
+
+```
+
+
+参考：[使用ESLint ＆ Prettier美化Vue代码](https://www.imooc.com/article/39856)
 
 ## prettier和ESLint一起使用
 很多项目都会使用ESLint来提高代码的质量，有两种方式能够集成Prettier和ESLint，你也可以单独或同时使用它们。
@@ -64,5 +78,29 @@
 
 
 
+To integrate this plugin with `eslint-config-prettier`, you can use the `"recommended" `configuration:
+
+In addition to the above installation instructions, install `eslint-config-prettier`:
+
+`npm install --save-dev eslint-config-prettier`
+
+Then you need to add `plugin:prettier/recommended` as the last extension in your `.eslintrc.json`:
+```
+{
+  "extends": [
+    "plugin:prettier/recommended"
+  ]
+}
+```
+This does three things:
+
+* Enables `eslint-plugin-prettier`.
+* Sets the `prettier/prettier` rule to `"error"`.
+* Extends the `eslint-config-prettier` configuration.
+
+You can then set Prettier's own options inside a `.prettierrc` file.
+
+
+[eslint-plugin-prettier官方说明](https://github.com/prettier/eslint-plugin-prettier)
 
 
