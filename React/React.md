@@ -94,6 +94,9 @@ var Aquarium = ({species}) => (
 
 [React v0.14 概览](http://undefinedblog.com/react-v0-14/)
 ### React 15.4.2
+
+### React 15.5
+React v15.5.0已经弃用了React.createClass函数
 ### React 16
 ## React入门
 
