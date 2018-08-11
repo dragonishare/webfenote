@@ -32,6 +32,8 @@ yarn常用命令
 [yarn global](https://yarnpkg.com/en/docs/cli/global)
 
 ```
+ yarn init //初始化生成package.json
+ 
  yarn install //根据package.json安装全部的依赖
  
  yarn global add packagenameA //全局安装packagenameA，global不能简写
@@ -46,6 +48,8 @@ yarn常用命令
 npm常用命令
 
 ```
+npm init //初始化生成package.json
+
 npm install //根据package.json安装全部的依赖
 
 npm install packagenameA -g //安装到全局，-g或者-global
@@ -58,6 +62,9 @@ npm uninstall packagenameA //卸载本地安装包
 npm uninstall packagenameA --save //卸载本地安装包，同时会更新package.json
 npm uninstall packagenameA --save-dev //卸载本地安装包，同时会更新package.json
 ```
+
+**React生命周期**
+
 
 
 ### React Router
