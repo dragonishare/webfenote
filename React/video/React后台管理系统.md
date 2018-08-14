@@ -7,19 +7,19 @@
 
 ### React
 
-**React特点**
+#### React特点
 
 * 声明式
 * 组件化
 * Virtual DOM高效的DOM Diff算法
 * 单向数据流
 
-**生态介绍**
+#### 生态介绍
 
 * Vue生态：Vue + Vue Router + Vuex + Axios + Babel + Webpack
 * React生态：React + React Router + Redux + Axios + Babel + Webpack
 
-**React脚手架、Yarn介绍**
+#### React脚手架、Yarn介绍
 
 * React官方脚手架 [create-react-app](https://github.com/facebook/create-react-app)
 * [Yarn](https://yarnpkg.com) - 新一代依赖包管理工具
@@ -27,7 +27,7 @@
   - 输出更简洁
   - 更语义化
 
-yarn常用命令
+**yarn常用命令**
 
 [yarn global](https://yarnpkg.com/en/docs/cli/global)
 
@@ -45,7 +45,7 @@ yarn常用命令
  yarn remove packagenameC //卸载指定包packagenameC,同时会更新package.json
 ```
 
-npm常用命令
+**npm常用命令**
 
 ```
 npm init //初始化生成package.json
@@ -63,11 +63,45 @@ npm uninstall packagenameA --save //卸载本地安装包，同时会更新packa
 npm uninstall packagenameA --save-dev //卸载本地安装包，同时会更新package.json
 ```
 
-**React生命周期**
+#### React生命周期
 
+componentWillMount
+render
+componentDidMount
 
+componentWillReceiveProps
+shouldComponentUpdate
+
+componentWillUpdate
+render
+componentDidUpdate
+
+componentWillUnmount
 
 ### React Router
+
+#### 介绍
+
+* `React Router 4` 版本中已不需要集中路由配置，**一切皆组件**
+* `react-router` 提供了一些核心的API，包括Router, Route, Switch, Redirect等
+* `react-router-dom` 包含`react-router`全部API，另外还有专门针对web应用的BrowserRouter, HashRouter, Link, NavLink等
+
+#### react-router-dom核心用法
+
+**HashRouter和BrowserRouter**
+
+**Route: path exact component render**
+
+参考：[初探 React Router 4.0](https://blog.csdn.net/sinat_17775997/article/details/69218382)
+
+**NavLink和Link**
+
+**Switch**
+
+**Redirect**
+
+
+
 ### Redux
 
 ## 中间件
