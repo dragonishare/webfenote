@@ -65,12 +65,19 @@ npm uninstall packagenameA --save-dev //卸载本地安装包，同时会更新p
 
 #### React生命周期
 
+![](media/15345657799528.jpg)
+
+
 componentWillMount
 render
 componentDidMount
 
 componentWillReceiveProps
+
 shouldComponentUpdate
+shouldComponentUpdate(nextProps, nextState)方法，默认返回true，**调用setState之后就会触发更新，即使state没有变化**，由于触发之后父组件会调用render，所以即使父组件的state没有变化（也就是子组件的props也没有变化），子组件同样会调用componentWillReceiveProps和shouldComponentUpdate
+
+
 
 componentWillUpdate
 render
@@ -101,6 +108,11 @@ componentWillUnmount
 **Redirect**
 
 
+#### react-router-dom路由实现的两种方式
+
+**混合组件化**
+
+**配置化**
 
 ### Redux
 
@@ -113,6 +125,11 @@ componentWillUnmount
 ## 公共封装模块
 
 ### 权限管理、菜单配置
+
+路由单独集中配置，因为涉及到Switch, login等嵌套问题，所以不适合通过遍历的方式动态生成
+
+菜单可以通过读取配置文件，遍历生成，同时根据role进行权限设置
+
 ### 消息通知
 ### API封装
 ### 错误拦截
