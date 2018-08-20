@@ -99,6 +99,24 @@ componentWillUnmount
 
 **Route: path exact component render**
 
+<Route> 自带三个 render method 和三个 props
+render methods 分别是：
+
+* `<Route component>`
+* `<Route render>`
+* `<Route children>`
+
+每种 render method 都有不同的应用场景，同一个<Route> 应该只使用一种 render method ，大部分情况下你将使用 component 
+
+props 分别是：
+ 
+* match
+* location
+* history
+ 所有的 render method 无一例外都将被传入这些 props
+
+
+
 参考：[初探 React Router 4.0](https://blog.csdn.net/sinat_17775997/article/details/69218382)
 
 **NavLink和Link**
