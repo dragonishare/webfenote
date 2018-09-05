@@ -38,6 +38,11 @@ Babel是React团队选择的在使用React过程中转换ES*和JSX为ES5语句�
 
 ![](media/15249119833756.jpg)
 
+### React 0.13
+
+ v0.13 后就支持了 ES6的class组件写法
+ `class App extends React.Component{…}`
+ 
 
 ### React 0.14
 
