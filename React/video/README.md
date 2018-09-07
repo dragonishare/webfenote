@@ -45,8 +45,6 @@ jsx语法糖：方便使用和易读的一种代码书写方式，不影响代�
      }
      ```
 
-     
-
   3. 在行内代码中绑定正确的执行上下文，比如
 
      ```jsx
@@ -57,7 +55,6 @@ jsx语法糖：方便使用和易读的一种代码书写方式，不影响代�
        }
      ```
 
-     
 
 this四种用法，详情：慕课网“JavaScript深入浅出”-this节
 
@@ -404,4 +401,6 @@ class CommentListContainer extends React.Component {
 - 所有的状态，保存在一个对象里面
 
 ### 基本概念和 API
+
+
 
