@@ -32,6 +32,7 @@ SublimeServer会启动一个轻量级的，静态的WEB服务器，让你在文�
     * 修改html文件内容按 ctr+s 保存，即可在chrome里面看到实时更新。
 
 #### Sublime Text 3 搭建 React.js 开发环境
+
 **1. Babel**
 ----
 支持ES6， React.js, jsx代码高亮，对 JavaScript, jQuery 也有很好的扩展。
@@ -153,6 +154,8 @@ jsformat 是 sublime 上 js 格式化比较好用的插件之一，通过修改�
 
 * SublimeCodeIntel
 
+* BracketHighlighter
+
 * A File Icon
 
 * SideBarEnhancements
@@ -176,6 +179,17 @@ jsformat 是 sublime 上 js 格式化比较好用的插件之一，通过修改�
 * git
 
 * autofilename 路径自动补全
+
+* EditorConfig
+
+* Babel
+
+* LiveReload
+
+* Terminal
+
+* Color Highlight: 在编辑器里显示颜色的背景色，不是**Color Highlighter**
+
 
 react环境插件
 
@@ -269,11 +283,11 @@ Sublime Text --> preferences --> Package settings --> Sublime Linter --> setting
 ## 显示sublime的字体
 view菜单下show console输入：
  `view.settings().get('font_face')`
- 
+
  默认主题Monokai,默认字体Menlo
+
  
- 
- 
+
 ## Sublime Text3 + Markdown + 实时预览
 ### 安装过程：
 
