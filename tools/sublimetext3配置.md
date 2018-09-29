@@ -279,3 +279,40 @@ view菜单下show console输入：
 
 
 
+## Sublime Text3 配置less保存自动编译
+Mac OSX环境下
+1. Sublime Text3 需要安装less，语法高亮插件
+2. Install NodeJS，通过npm在mac终端全局安装less `npm install less -gd`
+3. Optional: To use minification you will need a minifier. Install less-plugin-clean-css or similar.
+        npm install -g less-plugin-clean-css
+4. Optional: To use autoprefix. Install [less-plugin-autoprefix](https://github.com/less/less-plugin-autoprefix).
+
+        npm install -g less-plugin-autoprefix
+   
+到这里，已经可以通过手动编译less文件了，在Mac终端通过lessc手动编译 `lessc style.less style.css`
+
+如果需要在Sublime Text3中保存less文件时自动编译成css，还需要下面的步骤
+5. Sublime Text3 需要安装less2css，把less编译为css的插件
+
+**到此处，按照官方的，或网上的很多文章来说已经大功告成**
+
+但是当我保存less文件的时候，报"less2css error: `lessc` is not available"错误，明明在终端直接手动是可以lessc的，问题出在哪里呢，
+
+根据错误提示应该是lessc找不到，继续查看less2css插件在sublime中随附的readme文档
+```markdown
+Sublime Text 2 and 3 Plugin to compile less files to css on save.
+Requires lessc installed on PATH.
+```
+可能是环境变量的问题，一般情况下安装完less2css的时候是会自动匹配的
+
+需要做如下处理：
+1. 在mac终端输入`which lessc`，找到lessc的路径 `/Users/[username]/.nvm/versions/node/v10.10.0/bin/lessc`
+2. 修改Sublime Text3中less2css的配置文件`less2css.sublime-settings-User`
+```json
+{
+   "lesscCommand": "/Users/[username]/.nvm/versions/node/v10.10.0/bin/lessc"
+}
+```
+
+此时会发现在sublime Text3中保存less文件时，会在当前文件夹下同时出现了同名的.css文件
+
