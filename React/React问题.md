@@ -21,15 +21,18 @@
 
     setState()不是同步的
 
-5. 
-    
-### 通过class方式创建组件
-    
+5. ### 通过class方式创建组件
+
     事件处理方法要手动bind(this),有三种方式：
     
     * 在调用的时候bind(this)
     * 在constructor中先进行bind(this)
     * 定义函数的时候通过箭头函数的方式，可以避免bind(this)
-    
-    
+
+
+6. **form onsubmit事件，重复刷新问题**
+
+form表单的onsubmit事件提交之后，会定位到提交的action地址，在react和antd的form onsubmit提交时会造成在当前页重复刷新，所以需要`e.preventDefault();`
+
+
 
