@@ -94,8 +94,11 @@ Docker Hub(https://hub.docker.com) 提供了庞大的镜像集合供使用。
 
 Docker Machine是一个简化Docker安装的命令行工具，通过一个简单的命令行即可在相应的平台上安装Docker，比如VirtualBox、 Digital Ocean、Microsoft Azure。
 
-
 ## Docker安装及使用
+
+
+
+
 
 ## Docker常用命令
 
