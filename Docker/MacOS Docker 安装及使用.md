@@ -81,7 +81,9 @@ Product License: Community Engine
 
 # Docker 使用
 
-## 查看版本信息
+## 常用命令
+
+### 查看版本信息
 
 ```bash
 # 查看docker相关信息
@@ -94,7 +96,7 @@ docker -v 或者 docker --version
 docker version
 ```
 
-## docker run 命令
+### docker run 命令
 
 Docker 允许你在容器内运行应用程序， 使用 `docker run`命令来在容器内运行一个应用程序。
 
@@ -113,6 +115,10 @@ Docker 允许你在容器内运行应用程序， 使用 `docker run`命令来�
 
  * -t:在新容器内指定一个伪终端或终端
  * -i:允许你对容器内的标准输入 (STDIN) 进行交互
+ * -d:让容器在后台运行
+ * -P:将容器内部使用的网络端口映射到我们使用的主机上
+ *  可以通过 -p 参数来设置不一样的端口
+
 
 此时我们已进入一个 ubuntu15.10系统的容器
 
@@ -131,12 +137,51 @@ root@37017c93983f:/#
 启动容器（后台模式）: 使用以下命令创建一个以进程方式运行的容器
 `docker run -d ubuntu:15.10 /bin/sh -c "while true; do echo hello world; sleep 1; done"`
 
-通过`docker ps` 来查看容器情况
+### 查看命令
 
-## docker stop 命令
+```bash
+# 查看当前运行的容器
+docker ps
+
+# 查看所有容器，包括停止的
+docker ps -a
+
+# 查看最新创建的容器，只列出最后创建的
+docker ps -l
+
+# 查看网络端口
+docker port [容器ID|容器名]
+
+# 查看容器内部的标准输出
+docker logs [容器ID|容器名]
+
+# 查看容器内部运行的进程
+docker top [容器ID|容器名]
+
+# 查看 Docker 的底层信息。它会返回一个 JSON 文件记录着 Docker 容器的配置和状态信息
+docker inspect [容器ID|容器名]
+```
+
+### docker stop 命令
 
  使用`docker stop` 命令来停止容器
  
  `docker stop [容器ID|容器名]`
+ 
+ ### docker start 命令
+ 
+ 已经停止的容器，可以使用命令 `docker start [容器ID|容器名]` 来启动
+ 正在运行的容器，可以使用 `docker restart [容器ID|容器名]` 命令来重启
+ 
+ ## Docker容器使用
+ 
+ ### Docker 客户端
+ 
+ 直接输入 `docker` 命令来查看到 Docker 客户端的所有命令选项
+ 通过命令 `docker command --help` 更深入的了解指定的 Docker 命令使用方法
+ 
+ 
+ 
+ 
  
  
