@@ -24,7 +24,7 @@ brew cask install docker
 如果需要手动下载，请点击以下链接下载 Stable 或 Edge 版本的 Docker for Mac。
 如同 macOS 其它软件一样，安装也非常简单，双击下载的 .dmg 文件，然后将鲸鱼图标拖拽到 Application 文件夹即可。
 
-![img](http://www.runoob.com/wp-content/uploads/2018/01/1515480386-7270-1293367-9516b2edf79deee7.png)
+![img](assets/1515480386-7270-1293367-9516b2edf79deee7.png)
 
 从应用中找到 Docker 图标并点击运行。可能会询问 macOS 的登陆密码，输入即可。
 
@@ -101,6 +101,7 @@ docker version
 Docker 允许你在容器内运行应用程序， 使用 `docker run`命令来在容器内运行一个应用程序。
 
 `docker run ubuntu:15.10 /bin/echo "Hello world"`
+
 各个参数解析：
 
  * docker: Docker 的二进制执行文件。
@@ -111,14 +112,14 @@ Docker 允许你在容器内运行应用程序， 使用 `docker run`命令来�
 以上命令完整的意思可以解释为：Docker 以 ubuntu15.10 镜像创建一个新容器，然后在容器里执行 bin/echo "Hello world"，然后输出结果。
 
 `docker run -i -t ubuntu:15.10 /bin/bash`
+
 各个参数解析：
 
  * -t:在新容器内指定一个伪终端或终端
  * -i:允许你对容器内的标准输入 (STDIN) 进行交互
  * -d:让容器在后台运行
- * -P:将容器内部使用的网络端口映射到我们使用的主机上
- *  可以通过 -p 参数来设置不一样的端口
-
+ * -P:将容器内部端口随机映射到主机的端口
+ * -p:将容器内部端口绑定到指定的主机端口
 
 此时我们已进入一个 ubuntu15.10系统的容器
 
@@ -165,23 +166,81 @@ docker inspect [容器ID|容器名]
 ### docker stop 命令
 
  使用`docker stop` 命令来停止容器
- 
+
  `docker stop [容器ID|容器名]`
- 
- ### docker start 命令
- 
+
+### docker start 命令
+
  已经停止的容器，可以使用命令 `docker start [容器ID|容器名]` 来启动
  正在运行的容器，可以使用 `docker restart [容器ID|容器名]` 命令来重启
+
+### docker rm 命令
+
+ ```bash
+ # 删除容器，删除容器时，容器必须是停止状态
+ docker rm [容器ID|容器名]
  
- ## Docker容器使用
- 
- ### Docker 客户端
- 
+ # 删除所有的容器
+ docker rm $(docker ps -aq)
+ ```
+
+## Docker容器使用
+
+### Docker 客户端
+
  直接输入 `docker` 命令来查看到 Docker 客户端的所有命令选项
  通过命令 `docker command --help` 更深入的了解指定的 Docker 命令使用方法
- 
- 
- 
- 
- 
- 
+
+### 容器命名
+
+当创建一个容器的时候，docker会自动对它进行命名。另外，也可以使用--name标识来命名容器
+`docker run -d -P --name [容器名] training/webapp python app.py`
+
+## Docker 镜像使用
+
+当运行容器时，使用的镜像如果在本地中不存在，docker 就会自动从 docker 镜像仓库中下载，默认是从 Docker Hub 公共镜像源下载
+
+### 列出镜像列表
+
+ ```bash
+ # 列出本地主机上的镜像
+~ docker images
+REPOSITORY      TAG           IMAGE ID            CREATED             SIZE
+ubuntu          15.10         9b9cb95443b5        2 years ago         137MB
+training/webapp latest        6fae60ef3446        3 years ago         349MB
+ ```
+
+各个选项说明:
+ * REPOSITORY：表示镜像的仓库源
+ * TAG：镜像的标签
+ * IMAGE ID：镜像ID
+ * CREATED：镜像创建时间
+ * SIZE：镜像大小
+
+同一仓库源可以有多个 TAG，代表这个仓库源的不同个版本，如ubuntu仓库源里，有15.10、14.04等多个不同的版本，我们使用 REPOSITORY:TAG 来定义不同的镜像
+
+ ```bash
+  ~ docker run -t -i ubuntu:15.10 /bin/bash
+  root@6939a46db5bb:/#
+ ```
+
+如果不指定一个镜像的版本标签，例如只使用 ubuntu，docker 将默认使用 ubuntu:latest 镜像
+
+### 获取一个新的镜像（下载镜像）
+
+当我们在本地主机上使用一个不存在的镜像时 Docker 就会自动下载这个镜像。如果我们想预先下载这个镜像，我们可以使用 `docker pull 镜像名` 命令来下载它
+
+### 查找镜像
+
+ ```bash
+# 搜索镜像
+docker search 镜像名
+ ```
+
+# Docker软件安装
+
+## Docker 安装 Nginx
+
+### docker pull nginx(推荐)
+
+
