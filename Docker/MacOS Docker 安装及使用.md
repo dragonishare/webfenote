@@ -237,6 +237,16 @@ training/webapp latest        6fae60ef3446        3 years ago         349MB
 docker search 镜像名
  ```
 
+### 删除镜像
+
+ ```bash
+ # 从此机器中删除指定的镜像
+docker rmi <imagename>
+
+ # 从此机器中删除所有镜像
+docker rmi $(docker images -q)
+ ```
+
 # Docker软件安装
 
 ## Docker 安装 Nginx
