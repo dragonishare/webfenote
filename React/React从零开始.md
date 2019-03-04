@@ -34,7 +34,7 @@ var webpack = require('webpack'); module.exports = { entry: './src/app.js', outp
 
 ## 组件
 
-1. 每一个react组件都有一个render方法
+1. 每一个react类组件都有一个render方法
 2. 每个render方法都会返回一段jsx代码
 
 
