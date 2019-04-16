@@ -29,8 +29,35 @@ run.call(fatRabbit, 'the cupboard', 'the fridge'); */
     };
 }
 var killerRabbit = new Rabbit('killer');
-killerRabbit.speak('GRAAAAAAAH!'); */
+killerRabbit.speak('GRAAAAAAAH!');
+Rabbit.prototype.teeth = 'small';
+console.log(killerRabbit.teeth);
+killerRabbit.teeth = 'long.sharp, and bloody';
+console.log(killerRabbit.teeth);
+console.log(Rabbit.prototype.teeth); */
+/* function makeRabbit(adjective) {
+    return {
+        adjective: adjective,
+        speak: function(line) {
+            console.log('The ', this.adjective, ' rabbit says "', line, '"');
+        }
+    };
+}
+var blackRabbit = makeRabbit('black');
+blackRabbit.speak(); */
 
-
-
-
+/* function Rabbit(adjective) {
+    this.adjective = adjective;
+}
+Rabbit.prototype.speak = function(line) {
+    console.log('The ', this.adjective, ' rabbit says "', line, '".');
+} */
+Object.prototype.properties = function() {
+    var result = [];
+    for (var property in this) {
+        result.push(property);
+    }
+    return result;
+}
+var test = {x: 10, y: 3};
+console.log(test.properties());
