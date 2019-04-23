@@ -52,7 +52,7 @@ blackRabbit.speak(); */
 Rabbit.prototype.speak = function(line) {
     console.log('The ', this.adjective, ' rabbit says "', line, '".');
 } */
-Object.prototype.properties = function() {
+/*Object.prototype.properties = function() {
     var result = [];
     for (var property in this) {
         result.push(property);
@@ -60,4 +60,37 @@ Object.prototype.properties = function() {
     return result;
 }
 var test = {x: 10, y: 3};
-console.log(test.properties());
+console.log(test.properties());*/
+
+/*Object.prototype.properties = function() {
+    var result = [];
+    for (var property in this) {
+        if (this.hasOwnProperty(property)) {
+            result.push(property);
+        }
+    }
+    return result;
+}
+var test = {'Fat Igor': true, 'Fireball': true};
+console.log(test.properties());*/
+
+function Dictionary(startValues) {
+    this.values = startValues || {};
+}
+Dictionary.prototype.store = function(name, value) {
+    this.values[name] = value;
+}
+Dictionary.prototype.lookup = function(name) {
+    return this.values[name];
+}
+Dictionary.prototype.contains = function(name) {
+    return Object.prototype.propertyIsEnumerable.call(this.values, name);
+}
+Dictionary.prototype.each = function(action) {
+    forEachIn(this.values, action);
+}
+var colors = new Dictionary({
+    Grover: 'blue',
+    Elmo: 'red',
+    Bert: 'yellow'
+});
