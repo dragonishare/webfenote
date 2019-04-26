@@ -94,3 +94,14 @@ var colors = new Dictionary({
     Elmo: 'red',
     Bert: 'yellow'
 });
+
+function Foo() {
+    this.value = 2;
+}
+Foo.prototype = 1;
+function Bar() {}
+Bar.prototype = new Foo();
+Bar.prototype.foo = 'Hello World!';
+Bar.prototype.constructor = Bar;
+var test = new Bar();
+console.log(Bar.prototype);
