@@ -154,9 +154,329 @@ go run 编译并运行Go程序
 
 #### GoLand
 
+## Go语言基础
+
+Go是一门类似C的编译型语言，但是它的编译速度非常快。这门语言的关键字总共也就二十五个
+
+```
+break    default      func    interface    select
+case     defer        go      map          struct
+chan     else         goto    package      switch
+const    fallthrough  if      range        type
+continue for          import  return       var
+```
+
+示例
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello, world!")
+}
+​```
+```
+
+1. 第一行代码 *package main* 定义了包名。你必须在源文件中非注释的第一行指明这个文件属于哪个包，如：package main。package main表示一个可独立执行的程序，每个 Go 应用程序都包含一个名为 main 的包。
+2. 下一行 *import "fmt"* 告诉 Go 编译器这个程序需要使用 fmt 包（的函数，或其他元素），fmt 包实现了格式化 IO（输入/输出）的函数。
+3. 下一行 *func main()* 是程序开始执行的函数。main 函数是每一个可执行程序所必须包含的，一般来说都是在启动后第一个执行的函数（如果有 init() 函数则会先执行该函数）。
+4. 下一行 `/*...*/ `是注释，在程序执行时将被忽略。单行注释是最常见的注释形式，你可以在任何地方使用以 // 开头的单行注释。多行注释也叫块注释，均已以 /* 开头，并以 */ 结尾，且不可以嵌套使用，多行注释一般用于包的文档描述或注释成块的代码片段。
+5. 下一行 *fmt.Println(...)* 可以将字符串输出到控制台，并在最后自动增加换行字符 \n。 
+   使用 fmt.Print("hello, world\n") 可以得到相同的结果。 
+   Print 和 Println 这两个函数也支持使用变量，如：fmt.Println(arr)。如果没有特别指定，它们会以默认的打印格式将变量 arr 输出到控制台。
+6. 当标识符（包括常量、变量、类型、函数名、结构字段等等）以一个大写字母开头，如：Group1，那么使用这种形式的标识符的对象就可以被外部包的代码所使用（客户端程序需要先导入这个包），这被称为**导出**（像面向对象语言中的 public）；标识符如果以小写字母开头，则对包外是不可见的，但是他们在整个包的内部是可见并且可用的（像面向对象语言中的 protected ）。
+
+> 每一个可独立运行的Go程序，必定包含一个`package main`，在这个`main`包中必定包含一个入口函数`main`，而这个函数既没有参数，也没有返回值。
+>
+> 包名和包所在的文件夹名可以是不同的，此处的`<pkgName>`即为通过`package <pkgName>`声明的包名，而非文件夹名。
+
+Go使用`package`（和Python的模块类似）来组织代码。`main.main()`函数(这个函数位于主包）是每一个独立的可运行程序的入口点。Go使用UTF-8字符串和标识符(因为UTF-8的发明者也就是Go的发明者之一)，所以它天生支持多语言。
+
+### 基础
+
+#### 定义变量
+
+Go语言里面定义变量有多种方式。
+
+使用`var`关键字是Go最基本的定义变量方式，与C语言不同的是Go把变量类型放在变量名后面
+
+```
+//定义一个名称为“variableName”，类型为"type"的变量
+var variableName type
+
+//定义三个类型都是“type”的变量
+var vname1, vname2, vname3 type
+
+//初始化“variableName”的变量为“value”值，类型是“type”
+var variableName type = value
+
+//定义三个类型都是"type"的变量,并且分别初始化为相应的值,vname1为v1，vname2为v2，vname3为v3
+var vname1, vname2, vname3 type= v1, v2, v3
+
+//定义三个变量，它们分别初始化为相应的值,vname1为v1，vname2为v2，vname3为v3。然后Go会根据其相应值的类型来帮你初始化它们
+var vname1, vname2, vname3 = v1, v2, v3
+
+//定义三个变量，它们分别初始化为相应的值，vname1为v1，vname2为v2，vname3为v3。编译器会根据初始化的值自动推导出相应的类型
+vname1, vname2, vname3 := v1, v2, v3
+```
+
+`:=`这个符号直接取代了`var`和`type`,这种形式叫做简短声明。不过它有一个限制，那就是它只能用在函数内部；在函数外部使用则会无法编译通过，所以一般用`var`方式来定义全局变量。
+
+
+
+`_`（下划线）是个特殊的变量名，任何赋予它的值都会被丢弃。
+
+Go对于已声明但未使用的变量会在编译阶段报错。
+
+#### 常量
+
+所谓常量，也就是在程序编译阶段就确定下来的值，而程序在运行时无法改变该值。在Go程序中，常量可定义为数值、布尔值或字符串等类型。
+
+```
+const constantName = value
+//如果需要，也可以明确指定常量的类型：
+const Pi float32 = 3.1415926
+
+const Pi = 3.1415926
+const i = 10000
+const MaxThread = 10
+const prefix = "webkit_"
+```
+
+#### 内置基础类型
+
+##### Boolean
+
+在Go中，布尔值的类型为`bool`，值是`true`或`false`，默认为`false`。
+
+```Go
+var isActive bool  // 全局变量声明
+var enabled, disabled = true, false  // 忽略类型的声明
+func test() {
+    var available bool  // 一般声明
+    valid := false      // 简短声明
+    available = true    // 赋值操作
+}
+```
+
+##### 数值类型
+
+整数类型有无符号和带符号两种。Go同时支持`int`和`uint`，这两种类型的长度相同，但具体长度取决于不同编译器的实现。Go里面也有直接定义好位数的类型：`rune`, `int8`, `int16`, `int32`, `int64`和`byte`, `uint8`, `uint16`, `uint32`, `uint64`。其中`rune`是`int32`的别称，`byte`是`uint8`的别称。
+
+```
+//需要注意的一点是，这些类型的变量之间不允许互相赋值或操作，不然会在编译时引起编译器报错。
+var a int8
+var b int32
+c:=a + b
+//另外，尽管int的长度是32 bit, 但int 与 int32并不可以互用。
+```
+
+浮点数的类型有`float32`和`float64`两种（没有`float`类型），默认是`float64`。
+
+Go还支持复数。它的默认类型是`complex128`（64位实数+64位虚数）。如果需要小一些的，也有`complex64`(32位实数+32位虚数)。复数的形式为`RE + IMi`，其中`RE`是实数部分，`IM`是虚数部分，而最后的`i`是虚数单位。
+
+```
+var c complex64 = 5+5i
+//output: (5+5i)
+```
+
+##### 字符串
+
+Go中的字符串都是采用`UTF-8`字符集编码。字符串是用一对双引号（`""`）或反引号（`` `    ）括起来定义，它的类型是  `string`
+
+```
+var frenchHello string  // 声明变量为字符串的一般方法
+var emptyString string = ""  // 声明了一个字符串变量，初始化为空字符串
+func test() {
+    no, yes, maybe := "no", "yes", "maybe"  // 简短声明，同时声明多个变量
+    japaneseHello := "Konichiwa"  // 同上
+    frenchHello = "Bonjour"  // 常规赋值
+}
+```
+
+
+
+Go之所以会那么简洁，是因为它有一些默认的行为：
+
+- **大写字母开头的变量**是可导出的，也就是其它包可以读取的，是公有变量；**小写字母开头的就是不可导出的，是私有变量。**
+- 大写字母开头的函数也是一样，相当于`class`中的带`public`关键词的公有函数；小写字母开头的就是有`private`关键词的私有函数。
+
+### 流程和函数
+
+流程控制在编程语言中是最伟大的发明了，因为有了它，你可以通过很简单的流程描述来表达很复杂的逻辑。Go中流程控制分三大类：**条件判断，循环控制和无条件跳转**。
 
 
 
 
 
+## 指针
+
+变量是一种使用方便的占位符，用于引用计算机内存地址。
+
+Go 语言的**取地址符是 &，**放到一个变量前使用就会返回相应变量的内存地址。
+
+
+
+### 什么是指针
+
+一个指针变量指向了一个值的内存地址。
+
+类似于变量和常量，在使用指针前你需要声明指针。指针声明格式如下：
+
+```
+var var_name *var-type
+```
+
+var-type 为指针类型，var_name 为指针变量名，*** 号用于指定变量是作为一个指针**。
+
+
+
+### 如何使用指针
+
+指针使用流程：
+
+- 定义指针变量。
+- 为指针变量赋值。
+- 访问指针变量中指向地址的值。
+
+**在指针类型前面加上 * 号（前缀）来获取指针所指向的内容。**
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var a int = 20 /* 声明实际变量 */
+	var ip *int    /* 声明指针变量 */
+
+	ip = &a /* 指针变量的存储地址 */
+
+	fmt.Printf("a 变量的地址是: %x\n", &a)
+
+	/* 指针变量的存储地址 */
+	fmt.Printf("ip 变量储存的指针地址: %x\n", ip)
+
+	/* 使用指针访问值 */
+	fmt.Printf("*ip 变量的值: %d\n", *ip)
+}
+
+```
+
+### Go 空指针
+
+当一个指针被定义后没有分配到任何变量时，它的值为 **nil**。
+
+**nil 指针也称为空指针**。
+
+nil在概念上和其它语言的null、None、nil、NULL一样，都指代零值或空值。
+
+一个指针变量通常缩写为 **ptr**。
+
+空指针判断：
+
+```go
+if(ptr != nil)     /* ptr 不是空指针 */
+if(ptr == nil)    /* ptr 是空指针 */
+```
+
+### Go 语言指向指针的指针
+
+如果一个指针变量存放的又是另一个指针变量的地址，则称这个指针变量为指向指针的指针变量。
+
+当定义一个指向指针的指针变量时，第一个指针存放第二个指针的地址，第二个指针存放变量的地址：
+
+![img](assets/pointer_to_pointer.jpg)
+
+指向指针的指针变量声明格式如下：
+
+```go
+var ptr **int;
+```
+
+以上指向指针的指针变量为整型。
+
+**访问指向指针的指针变量值需要使用两个 * 号**
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var a int
+	var ptr *int
+	var pptr **int
+
+	a = 3000
+
+	/* 指针 ptr 地址 */
+	ptr = &a
+
+	/* 指向指针 ptr 地址 */
+	pptr = &ptr
+
+	/* 获取 pptr 的值 */
+	fmt.Printf("变量 a = %d\n", a)                  //变量 a = 3000
+	fmt.Printf("指针变量 *ptr = %d\n", *ptr)          //指针变量 *ptr = 3000
+	fmt.Printf("指向指针的指针变量 **pptr = %d\n", **pptr) //指向指针的指针变量 **pptr = 3000
+}
+
+```
+
+### Go 语言指针作为函数参数
+
+Go 语言允许向函数传递指针，只需要在函数定义的参数上设置为指针类型即可。
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	/* 定义局部变量 */
+	var a int = 100
+	var b int = 200
+
+	fmt.Printf("交换前 a 的值 : %d\n", a)
+	fmt.Printf("交换前 b 的值 : %d\n", b)
+
+	/* 调用函数用于交换值
+	 * &a 指向 a 变量的地址
+	 * &b 指向 b 变量的地址
+	 */
+	swap(&a, &b)
+
+	fmt.Printf("交换后 a 的值 : %d\n", a)
+	fmt.Printf("交换后 b 的值 : %d\n", b)
+}
+
+func swap(x *int, y *int) {
+	var temp int
+	temp = *x /* 保存 x 地址的值 */
+	*x = *y   /* 将 y 赋值给 x */
+	*y = temp /* 将 temp 赋值给 y */
+}
+
+```
+
+## Go 语言结构体
+
+Go 语言中数组可以存储同一类型的数据，但在结构体中我们可以为不同项定义不同的数据类型。
+
+结构体是由一系列具有相同类型或不同类型的数据构成的数据集合。
+
+### 定义结构体
+
+结构体定义需要使用 type 和 struct。struct 语句定义一个新的数据类型，结构体中有一个或多个成员。type 语句设定了结构体的名称
+
+
+
+## Go 语言切片(Slice)
+
+Go 语言切片是对数组的抽象。
+
+Go 数组的长度不可改变，在特定场景中这样的集合就不太适用，Go中提供了一种灵活，功能强悍的内置类型切片("动态数组"),与数组相比切片的长度是不固定的，可以追加元素，在追加时可能使切片的容量增大。
 
