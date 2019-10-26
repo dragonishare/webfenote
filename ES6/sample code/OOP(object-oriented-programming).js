@@ -104,4 +104,4 @@ Bar.prototype = new Foo();
 Bar.prototype.foo = 'Hello World!';
 Bar.prototype.constructor = Bar;
 var test = new Bar();
-console.log(Bar.prototype);
+// console.log(Bar.prototype);
