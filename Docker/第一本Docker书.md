@@ -7,6 +7,12 @@ Docker 在虚拟化的容器执行环境中增加了一个应用程序部署引�
 
 Docker 是一个客户 - 服务器（C/S）架构的程序。Docker 客户端只需向 Docker 服务器或守护进程发出请求，服务器或守护进程将完成所有工作并返回结果。Docker 提供了一个命令行工具 docker 以及一整套 RESTful API。你可以在同一台宿主机上运行 Docker 守护进程和客户端，也可以从本地的 Docker 客户端连接到运行在另一台宿主机上的远程 Docker 守护进程。
 
+
+
+安装好的Docker有两个程序：Docker服务端和Docker客户端。其中Docker服务进程，管理着所有的容器。Docker 客户端则扮演着Docker服务端的远程控制器，可以用来控制 Docker 的服务端进程。**大部分的情况下，Docker服务端和客户端运行在一台机器上。**
+
+
+
 ![image-20190929143234499](assets/image-20190929143234499.png)
 
 
